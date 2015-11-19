@@ -16,6 +16,10 @@
 // });
 
 
-Route::get('/login', 'adminController@login');
+Route::get('/login', 'adminController@login_show');
 
+Route::post('/login', 'adminController@login_login');
 
+Route::get('/register', 'adminController@register_show');
+
+Route::post('/register', 'adminController@register_addUser');
