@@ -27,30 +27,24 @@ class adminController extends Controller
         $password_post = $request->input('password');
 
         // Compare if the email and password are compatible with the database records
-        $email_database = DB::table('userInfo')->where('email', $email_post);
-        if($email_database->count() <= 0)
+        $user = DB::table('userInfo')->where('email', $email_post)->first();
+
+        if($user == null)
         {
            $login_error_msg = "The email is not correct, please try again.";
            return Redirect::to('login')->with('login_error_msg', $login_error_msg);
         }
         else
         {           
-            $password_database = DB::table('userInfo')->where('email', $email_post)->value('password');           
-
-            if($password_database != $password_post)
+            if($user->password != $password_post)
             {
                 $login_error_msg = "The password is not correct, please try again.";
-                echo "haha, password is not correct";
-                // return Redirect::to('login')->with($login_error_msg);
+                return Redirect::to('login')->with('login_error_msg', $login_error_msg);
             }
             else
             {
-                $email_database = DB::table('userInfo')->where('email', $email_post)->value('email');
-                $name_database = DB::table('userInfo')->where('email', $email_post)->value('name');
-
-                Session::put('email', $email_database);
-                Session::put('password', $password_database);
-                Session::put('name', $name_database); 
+                Session::put('email', $user->email);
+                Session::put('name', $user->name); 
 
                 return Redirect::to('login'); // Todo: need to redirct to a correct page
             }
@@ -67,7 +61,7 @@ class adminController extends Controller
         $validator = Validator::make($request->all(),[
             'email' => 'required|email|unique:userInfo,email',
             'password' => 'required|confirmed',
-            'name' => 'required|unique:userInfo,name'
+            'name' => 'required'
         ]);
 
         if ($validator->fails())

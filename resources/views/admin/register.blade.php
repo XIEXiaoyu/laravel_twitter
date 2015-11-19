@@ -6,12 +6,10 @@
 	<div class="content">
 		<p class="form_title">Register to be a memeber</p>
 
-		@if ($errors->any())
-			<ul class="error_group">
+		@if ($errors->any())			
 				@foreach($errors->all() as $error)
-				<li class="error_message">{{ $error }}</li>
+				<p class="error_message">{{ $error }}</p> 
 				@endforeach
-			</ul>
 		@else
 			<p class="below_form_title">Start taking notes today</p>
 		@endif

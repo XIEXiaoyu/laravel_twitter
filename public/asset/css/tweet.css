@@ -401,12 +401,8 @@ SignUp form
 	color: #616161;
 }
 
-.error_group {
-	list-style: none;
-}
-
 .error_message {
-	width: 470px;
+	width: 500px;
 	height: 47px;
 	line-height: 47px;
 	padding-left: 10px;
