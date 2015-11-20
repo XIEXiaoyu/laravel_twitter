@@ -23,3 +23,5 @@ Route::post('/login', 'adminController@login_login');
 Route::get('/register', 'adminController@register_show');
 
 Route::post('/register', 'adminController@register_addUser');
+
+Route::get('/sendTwitter', 'tweetController@sendTwitter_show');
