@@ -25,3 +25,9 @@ Route::get('/register', 'adminController@register_show');
 Route::post('/register', 'adminController@register_addUser');
 
 Route::get('/sendTwitter', 'tweetController@sendTwitter_show');
+
+Route::post('/sendTwitter', 'tweetController@sendTwitter_send');
+
+Route::get('/timeline', 'tweetsController@timeline_show');
+
+Route::get('/profile', 'tweetsController@profile_show');

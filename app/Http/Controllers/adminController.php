@@ -46,7 +46,7 @@ class adminController extends Controller
                 Session::put('email', $user->email);
                 Session::put('name', $user->name); 
 
-                return Redirect::to('login'); // Todo: need to redirct to a correct page
+                return Redirect::to('sendTwitter');
             }
         }
     }
@@ -61,6 +61,7 @@ class adminController extends Controller
         $validator = Validator::make($request->all(),[
             'email' => 'required|email|unique:userInfo,email',
             'password' => 'required|confirmed',
+            'password_confirmation'=>'Required',
             'name' => 'required'
         ]);
 
