@@ -13,26 +13,25 @@
 			<nav>
 				<ul>
 					<li class="selected">					
-						<a href=""><span class="icon-home3 icon"></span>Home</a>
+						<a href="{{ url('timeline') }}"><span class="icon-home3 icon"></span>Home</a>
 					</li>
 					<li>						
-						<a href=""><span class="icon-drawer icon"></span>Messages</a>
+						<a href="{{ url('profile') }}"><span class="icon-drawer icon"></span>Messages</a>
 					</li>
 					<li>						
 						<a href=""><span class="icon-heart icon"></span>Favorites</a>
 					</li>
 					<li>
-						<a href=""><span class="icon-signup icon"></span>Signup</a>
+						<a href="{{ url('register') }}"><span class="icon-signup icon"></span>Signup</a>
 					</li>
 					<li>
-						<a href=""><span class="icon-login icon"></span>Login</a>
+						<a href="{{ url('login') }}"><span class="icon-login icon"></span>Login</a>
 					</li>
 				</ul>
 			</nav>
 			<img src="{{'asset/img/73.jpg'}}" alt="Photograph of Chris" class="nav-photo">
 		</header>
     </div>
-
     @yield('content')
     
 </body>

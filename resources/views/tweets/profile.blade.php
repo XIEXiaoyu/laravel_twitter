@@ -1,8 +1,22 @@
 @extends('app')
 
 @section('content')
-
 <div class="wrapper">
+	@if($isMyself == false)
+	<div class="follow">
+		@if($is_followed == false)
+		<form action="{{ 'profile' }}" method="post">
+			<input type="hidden" name="_token" value="{!! csrf_token() !!}">
+			<input type="hidden" name="follow">
+			<input type="hidden" name="follow_who" value="{{ $user_id }}">
+			<input class="follow_submit" type="submit" value="Follow me">
+		</form>	
+		@else
+		<button class="follow_submit">Already followed</button>
+		@endif	
+	</div>
+	@endif
+
 	@if (count($posts) == 0)
 	<p>You have no posts by now.</p>
 	@else

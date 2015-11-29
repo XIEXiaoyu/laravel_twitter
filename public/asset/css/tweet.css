@@ -22,7 +22,6 @@ HEADING
  **********************************/
 
 .heading {
-	float: left;
 	width: 100%;
 	height: 49px;
 	background-color: #d8d8d8;
@@ -31,10 +30,10 @@ HEADING
 }
 
 header {
+	display: block;
 	width: 798px;
 	margin-left: auto;
 	margin-right: auto;
-
 }
 
 .note {
@@ -114,12 +113,13 @@ twitter message
 **************************************/
 
 .tweet {
+	float: left;
 	overflow:hidden;
 	background-color: #ffffff; 
 	border: 1px solid #d8d8d8;
 	max-width: 750px;
 	border-radius: 4px;
-	margin: 25px auto 0;
+	margin: 0 auto 25px;
 	padding-top: 25px;
 	padding-left: 25px;
 	padding-right: 25px;
@@ -304,8 +304,10 @@ previous and next
 *********************************/
 
 .pre_and_next {
+	display: block;
 	margin-top: 25px;
 	margin-bottom: 147px;
+	clear: left;
 }
 
 .pre_and_next ul {
@@ -498,4 +500,27 @@ SignUp form
 	height: 42px;
 	margin-top: 145px;
 	margin-bottom: 80px;
+}
+
+
+
+/*
+follow
+*/
+.follow
+{
+	float: right;
+	margin-bottom: 10px;
+}
+
+.follow_submit
+{
+	height: 30px;
+	width: 150px;
+	border: 1px solid #d9d8d8;
+	border-radius: 4px;
+	background-color: #ffffff;
+	margin-bottom: 18px;
+	padding-left: 10px;
+	color: #494949;
 }

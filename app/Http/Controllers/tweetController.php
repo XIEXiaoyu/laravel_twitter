@@ -37,6 +37,9 @@ class tweetController extends Controller
             $tweet_msg = $request->input('tweet_msg');
 
             $sendTweet_msg = new sendTweet_msg();
+
+            $sendTweet_msg->user_id = $request->session()->get('user_id');
+
             $sendTweet_msg->tweet_msg = $tweet_msg;
 
             $sendTweet_msg->email = $request->session()->get('email');
