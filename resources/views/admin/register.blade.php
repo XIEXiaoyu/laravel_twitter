@@ -1,4 +1,4 @@
-@extends('app')
+@extends('app_login')
 
 @section('content')
 
@@ -17,15 +17,18 @@
 		<div class="form_wrapper_left_and_right">
 				<div class="left_indication_text">
 					<p class="user_input">Email</p>
+					<p class="user_input">User Name</p>
 					<p class="user_input">Password</p>
 					<p class="user_input">Confirm Password</p>
-					<p class="user_input">Username</p>
+					<p class="user_input">Name</p>
 				</div>
 
 				<div class="right_form_wrapper">
 					<form action="{{ url('register') }}" method="post">
 						<input type="hidden" name="_token" value="{!! csrf_token() !!}">
 						<input name="email" type="email" class="email" placeholder="Your email address">
+						<input name="user_name" type="text" class="name"
+						placeholder="e.g. princess">
 						<input name="password" type="password" class="password" placeholder="********">
 						<input name="password_confirmation" type="password" class="conform_password" placeholder="********">
 						<input name="name" type="text" class="text"placeholder="e.g. Alice">

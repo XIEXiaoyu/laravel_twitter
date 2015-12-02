@@ -4,14 +4,16 @@
 
 <div class="wrapper">
 	
+	@foreach ($all_followed_posts as $post)
 	<div class="tweet">
 		<div class="left_photo">
 			<img src="{{'asset/img/zhiyan_head.png'}}" alt="Photograph of Zhiyan" class="profile-photo">
 		</div>
 		<div class="right_text">
-			<p class="twitterer">Duan Zhiyan</p>
-			<p class="at_message">@zhiyan · Jan 16</p>
-			<p class="twitter_message">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+			<p class="twitterer">{{ $post->name }}</p>
+			<p class="at_message">{{ '@' . $post->user_name . $post->created_at }}</p>
+			<p class="twitter_message">
+				{{ $post->tweet_msg }}
 			</p>
 			<div class="function_links">
 				<ul>
@@ -28,6 +30,7 @@
 			</div>
 		</div>
 	</div>
+	@endforeach
 
 	<div class="pre_and_next">
 		<ul>

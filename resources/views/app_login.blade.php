@@ -12,21 +12,12 @@
 			<a href="" class="note"><span class="icon-quill"></span>Notes</a>
 			<nav>
 				<ul>
-					<li class="selected">					
-						<a href="{{ url('timeline?user_id=' . session('user_id')) }}"><span class="icon-home3 icon"></span>timeline</a>
-					</li>
-					<li>						
-						<a href="{{ url('profile') }}"><span class="icon-drawer icon"></span>profile</a>
-					</li>
-					<li>						
-						<a href=""><span class="icon-heart icon"></span>Favorites</a>
-					</li>
-					<li>						
-						<a href="{{ url('sendTwitter') }}"><span class="icon-compose icon"></span>Post</a>
+					<li>
+						<a href="{{ url('register') }}"><span class="icon-signup icon"></span>Signup</a>
 					</li>
 					<li>
-						<a href="{{ url('logout') }}"><span class="icon-logout icon"></span>Logout</a>
-					</li>				
+						<a href="{{ url('login') }}"><span class="icon-login icon"></span>Login</a>
+					</li>
 				</ul>
 			</nav>
 			<a href="{{ url('preference') }}"><img src="{{'asset/img/73.jpg'}}" alt="Photograph of Chris" class="nav-photo"></a>

@@ -52,6 +52,13 @@ class adminController extends Controller
         }
     }
 
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+
+        return Redirect::to('login');
+    }
+
     public function register_show()
     {
     	return view('admin.register');
@@ -74,17 +81,42 @@ class adminController extends Controller
         else
         {
             $email = $request->input('email');
+            $userName = $request->input('user_name');
             $password = $request->input('password');
             $name = $request->input('name');
 
             $userInfo = new userInfo();
             $userInfo->email = $email;
+            $userInfo->user_name = $userName;
             $userInfo->password = $password;
             $userInfo->name = $name;
 
             $userInfo->save();
 
             return Redirect::to('login');
+        }
+    }
+
+    public function preference()
+    {
+        return view('admin.preference');
+    }
+
+    public function xyz(Request $request)
+    {
+        if(empty($request->session()->get('user_id')))
+        {
+            return Redirect::to('login');
+        }
+        else
+        {
+            $user_id = $request->session()->get('user_id');
+            $signature = $request->input('signature');
+        
+            userInfo::where('id', $user_id)
+              ->update(['signature' => $signature]);
+              
+            return Redirect::to('profile?user_id='. $user_id); 
         }
     }
 }

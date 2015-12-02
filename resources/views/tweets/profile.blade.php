@@ -18,7 +18,7 @@
 	@endif
 
 	@if (count($posts) == 0)
-	<p>You have no posts by now.</p>
+	<p class="no_post">No posts by now.</p>
 	@else
 	@foreach ($posts as $post)
 	<div class="tweet">
@@ -26,8 +26,8 @@
 			<img src="{{'asset/img/zhiyan_head.png'}}" alt="Photograph of Zhiyan" class="profile-photo">
 		</div>
 		<div class="right_text">
-			<p class="twitterer">{{ session('name') }}</p>
-			<p class="at_message">{{ '@' . 'Xie Jun' }} · {{ $post->created_at}}</p>
+			<p class="twitterer">{{ $name }}</p>
+			<p class="at_message">{{ '@' . $user_name }} · {{ $post->created_at}}</p>
 			<p class="twitter_message">{{ $post->tweet_msg}}
 			</p>
 			<div class="function_links">

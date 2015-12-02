@@ -524,3 +524,33 @@ follow
 	padding-left: 10px;
 	color: #494949;
 }
+
+
+
+/* 
+signature
+*/
+.write_a_signature 
+{	width: 648px;
+	min-height: 65px;
+	margin-top: 0;
+	margin-bottom: 25px;
+	padding: 0;
+	font-size: 16px;
+}
+
+.no_post
+{
+	margin: auto;
+	clear: both;
+	width: 500px;
+	height: 30px;
+	border: 1px solid blue;
+	line-height: 30px;
+	padding-left: 5px;
+}
+
+.follow_who
+{
+	float: right;
+}

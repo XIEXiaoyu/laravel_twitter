@@ -28,8 +28,20 @@ Route::get('/sendTwitter', 'tweetController@sendTwitter_show');
 
 Route::post('/sendTwitter', 'tweetController@sendTwitter_send');
 
-Route::get('/timeline', 'tweetsController@timeline_show');
-
 Route::get('/profile', 'tweetsController@profile_show');
 
 Route::post('/profile', 'tweetsController@profile_follow');
+
+Route::get('/timeline', 'tweetsController@timeline_show');
+
+Route::get('/preference', 'adminController@preference');
+
+Route::post('/abc', 'adminController@xyz');
+
+Route::get('/all_users', 'followController@display_all_user');
+
+Route::get('/who_to_follow', 'followController@display_unfollowed');
+
+Route::get('/already_followed', 'followController@display_followed');
+
+Route::get('/logout', 'adminController@logout');
