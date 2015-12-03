@@ -303,6 +303,31 @@ leave a message
 previous and next
 *********************************/
 
+.pager{
+	display: block;
+	clear: left;
+	list-style: none;
+	margin: 25px 0 147px;
+	padding-left: 0;
+}
+.pager li{
+	display: inline-block;
+	line-height: 42px;
+	text-align: center;
+	border-radius: 21px;
+	background-color: #f9faf9;
+	height: 40px;
+	width: 125px;
+	border: 1px solid #cccccc;
+}
+.pager li:first-child{
+	float:left;
+
+}
+.pager li:last-child{
+	float:right;
+}
+
 .pre_and_next {
 	display: block;
 	margin-top: 25px;
