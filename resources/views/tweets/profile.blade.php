@@ -6,7 +6,11 @@
 	<div class="follow_and_tweets"></div>
 	<div class="main_body">
 		<div class="particulars">
-			
+			<a href=""></a>
+			<a href=""></a>
+			<p></p>
+			<p></p>
+			<p></p>
 		</div>
 
 		<div class="wrapper">
@@ -34,8 +38,8 @@
 					<img src="{{'asset/img/zhiyan_head.png'}}" alt="Photograph of Zhiyan" class="profile-photo">
 				</div>
 				<div class="right_text">
-					<p class="twitterer">{{ $name }}</p>
-					<p class="at_message">{{ '@' . $user_name }} · {{ $post->created_at}}</p>
+					<p class="twitterer">{{ $user->name }}</p>
+					<p class="at_message">{{ '@' . $user->user_name }} · {{ $post->created_at}}</p>
 					<p class="twitter_message">{{ $post->tweet_msg}}
 					</p>
 					<div class="function_links">
@@ -72,7 +76,7 @@
 		<div class="who_to_follow">
 				
 		</div>
-		
+
 	</div>	<!-- end of main_body -->
 </div>  <!-- end of below_heading -->
 

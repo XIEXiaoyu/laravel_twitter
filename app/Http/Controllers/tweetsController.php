@@ -51,19 +51,17 @@ class tweetsController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->get();
 
-        $sig_record = userInfo::where('id', $user_id)->first();
-        $user_name = $sig_record->user_name;
-        $signature = $sig_record->signature;
-        $name = $sig_record->name;
+        $user = userInfo::where('id', $user_id)->first();
+        $user_name = $user->user_name;
+        $signature = $user->signature;
+        $name = $user->name;
 
         return view('tweets.profile', array(
             'posts' => $posts,
             'isMyself' => $isMyself,
             'is_followed' => $is_followed,
             'user_id' => $request->get('user_id'),
-            'signature' => $signature,
-            'user_name' => $user_name,
-            'name' => $name,
+            'user' => $user
         ));
     }
 
