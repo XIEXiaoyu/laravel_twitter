@@ -16,7 +16,8 @@
 						<a href="{{ url('timeline?user_id=' . session('user_id')) }}"><span class="icon-home3 icon"></span>timeline</a>
 					</li>
 					<li>						
-						<a href="{{ url('profile') }}"><span class="icon-drawer icon"></span>profile</a>
+						<a href="{{ url('profile?user_id=' . session
+						('user_id')) }}"><span class="icon-drawer icon"></span>profile</a>
 					</li>
 					<li>						
 						<a href=""><span class="icon-heart icon"></span>Favorites</a>
@@ -29,7 +30,9 @@
 					</li>				
 				</ul>
 			</nav>
-			<a href="{{ url('preference') }}"><img src="/asset/img/73.jpg" alt="Photograph of Chris" class="nav-photo"></a>
+			<a href="{{ url('profile_and_settings') }}"><img src="
+				{{ $user->pro_img_path }}" alt="Photograph of {{ $user->name }}" class="nav-photo">
+			</a>
 		</header>
     </div>
     @yield('content')

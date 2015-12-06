@@ -1,4 +1,4 @@
-@extends('app_login')
+@extends('app_login_register')
 
 @section('content')
 

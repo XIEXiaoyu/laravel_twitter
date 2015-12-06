@@ -15,39 +15,39 @@ use App\Http\Controllers\Controller;
 
 class adminController extends Controller
 {
-    public function login_show()
+    public function login_display()
     {    	
         return view('admin.login');
     }
 
-    public function login_login(Request $request)
+    public function login_process(Request $request)
     {
         // get data from post
-        $email_post = $request->input('email');
-        $password_post = $request->input('password');
+        $email = $request->input('email');
+        $password= $request->input('password');
 
         // Compare if the email and password are compatible with the database records
-        $user = DB::table('userInfo')->where('email', $email_post)->first();
+        $user = userInfo::where('email', $email)->first();
 
         if($user == null)
         {
-           $login_error_msg = "The email is not correct, please try again.";
-           return Redirect::to('login')->with('login_error_msg', $login_error_msg);
+           $error_msg = "The email is not correct, please try again.";
+           return Redirect::to('login')->with('login_error_msg', $error_msg);
         }
         else
         {           
-            if($user->password != $password_post)
+            if($user->password != $password)
             {
-                $login_error_msg = "The password is not correct, please try again.";
-                return Redirect::to('login')->with('login_error_msg', $login_error_msg);
+                $error_msg = "The password is not correct, please try again.";
+                return Redirect::to('login')->with('login_error_msg', $error_msg);
             }
             else
             {
                 Session::put('email', $user->email);
                 Session::put('name', $user->name); 
-                Session::put('user_id', $user->id);
+                Session::put('me_id', $user->id);
 
-                return Redirect::to('sendTwitter');
+                return Redirect::to('profile?user_id=' . $user->id);
             }
         }
     }
@@ -90,6 +90,7 @@ class adminController extends Controller
             $userInfo->user_name = $userName;
             $userInfo->password = $password;
             $userInfo->name = $name;
+            $userInfo->pro_img_path = '/asset/img/default_profile.png';
 
             $userInfo->save();
 
@@ -97,26 +98,47 @@ class adminController extends Controller
         }
     }
 
-    public function preference()
+    public function display(Request $request)
     {
-        return view('admin.preference');
+        if(empty($request->session()->get('user_id')))
+        {
+            return Redirect::to('login');
+        }  
+          
+        $user_id = $request->session()->get('user_id'); 
+
+        $user = userInfo::where('id', $user_id)->first();
+
+        return view('admin.profile_and_settings', ['user' => $user]);
     }
 
-    public function xyz(Request $request)
+    public function processing(Request $request)
     {
         if(empty($request->session()->get('user_id')))
         {
             return Redirect::to('login');
         }
-        else
+
+        $user_id = $request->session()->get('user_id');
+        $signature = $request->input('signature');
+    
+        userInfo::where('id', $user_id)
+          ->update(['signature' => $signature]);
+
+        $filename = $_FILES['pro_img']['tmp_name'];
+        if(is_uploaded_file($filename))
         {
-            $user_id = $request->session()->get('user_id');
-            $signature = $request->input('signature');
-        
-            userInfo::where('id', $user_id)
-              ->update(['signature' => $signature]);
-              
-            return Redirect::to('profile?user_id='. $user_id); 
+            $destination = public_path() . '/asset/img/' . $user_id . '.jpg';
+            $filename = $_FILES['pro_img']['tmp_name'];
+            move_uploaded_file($filename, $destination);
+
+            // save $destination to database table userInfo
+            $user_info = new userInfo;
+            $path = '/asset/img/' . $user_id . '.jpg';
+            $user_info::where('id', $user_id)
+            ->update(['pro_img_path' => $path]);
         }
+  
+        return Redirect::to('profile?user_id='. $user_id); 
     }
 }

@@ -14,54 +14,57 @@ use Redirect;
 
 class tweetsController extends Controller
 {
-    public function profile_show(Request $request)
+    public function profile_display(Request $request)
     {
         if(empty($request->session()->get('user_id')))
         {
             return Redirect::to('login');
         }
 
+        // 'me' is the login user
+        $me = $request->session()->get('user_id');
+
+        // 'me' is visiting the the profile belongs to the user_id  
         $user_id = $request->get('user_id');
-        
-        $visitor = $request->session()->get('user_id');
 
         $isMyself = false;
-        $is_followed = false;
+        $isFollowed = false;
 
-        // if profile displays the login user's page, then don't 
-        // display 'follow me' button. If alreay followed, display
-        // 'already followed' instead of diplay 'follow me'.
-        if($user_id == $visitor)
+        // check if the login user is visiting his own profile
+        if($user_id == $me)
         {
-            $isMyself = true;
-            $is_follow = true;
-        }
-        else
-        {
-            $isMyself = false;
+            $isMyself = true;   // if $isMyself is true, then don't
+                                // display any 'follow me' or 'alre-
+                                // ady followed' button on the profile
 
-            $follow_relation = new follow_relation;
-            $record = $follow_relation::where('follower', $user_id)
-                        ->where('user_id', $visitor)
-                        ->get();
-            $is_followed = ! $record->isEmpty();
+            $isFollowed = true;  // if $is_follow is true, then display
+                                // 'already followed' on the profile
         }
 
-        $posts = sendTweet_msg::where('user_id', $user_id)
-                ->orderBy('created_at', 'desc')
-                ->get();
-
+        // get the user's information
         $user = userInfo::where('id', $user_id)->first();
-        $user_name = $user->user_name;
-        $signature = $user->signature;
-        $name = $user->name;
+
+        // get the user's posts
+        $posts = sendTweet_msg::where('user_id', $user_id)
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        // check if the profile's owner is followed by 'me'
+        $followed = follow_relation::where('user_id', $me)
+        ->where('follower', $user_id)
+        ->first();
+
+        if($followed)  // if 'me' follow the profile's owner
+        {
+            $isFollowed = true;
+        }
 
         return view('tweets.profile', array(
             'posts' => $posts,
             'isMyself' => $isMyself,
-            'is_followed' => $is_followed,
-            'user_id' => $request->get('user_id'),
-            'user' => $user
+            'isFollowed' => $isFollowed,
+            'user' => $user,
+            'me' => $me,
         ));
     }
 
@@ -73,16 +76,16 @@ class tweetsController extends Controller
         }
         else
         {
-            // user
-            $user_id = $request->session()->get('user_id');
+            // me
+            $me = $request->session()->get('user_id');
 
-            // 想要 Follow 谁？
+            // the person that 'me' wants to follow
             $follow_who = $request->input('follow_who');
 
             // save following action to database
             $follow_relation = new follow_relation;
 
-            $follow_relation->user_id = $user_id;
+            $follow_relation->user_id = $me;
             $follow_relation->follower = $follow_who;
 
             $follow_relation->save();

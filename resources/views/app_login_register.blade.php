@@ -20,7 +20,6 @@
 					</li>
 				</ul>
 			</nav>
-			<a href="{{ url('preference') }}"><img src="{{'asset/img/73.jpg'}}" alt="Photograph of Chris" class="nav-photo"></a>
 		</header>
     </div>
     @yield('content')

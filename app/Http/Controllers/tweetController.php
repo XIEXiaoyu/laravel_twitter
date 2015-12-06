@@ -16,8 +16,10 @@ use App\Http\Controllers\Controller;
 class tweetController extends Controller
 {
     public function sendTwitter_show(Request $request)
-    {
-        return view('tweet.sendTwitter');   	
+    {   
+        $user_id = $request->session()->get('user_id');
+        $user = userInfo::where('id', $user_id)->first();
+        return view('tweet.sendTwitter', ['user' => $user]);   	
     }
 
     public function sendTwitter_send(Request $request)
@@ -26,41 +28,42 @@ class tweetController extends Controller
         {
             return Redirect::to('login');
         }
+
+        // 创建一个数据表，名叫sendTweet_msg，里面有id, email, tweet_msg
+        // 收到post后，把tweet_msg存到数据表里面
+        $validator = Validator::make($request->all(),[
+            'tweet_msg' => 'required' //Todo: comfirm what rules are needed to validate msg 
+        ]);
+
+        if ($validator->fails())
+        {
+            return Redirect::to('sendTwitter')->withErrors($validator);
+        }
+
         else
         {
-            // 创建一个数据表，名叫sendTweet_msg，里面有id, email, tweet_msg
-            // 收到post后，把tweet_msg存到数据表里面
-            $validator = Validator::make($request->all(),[
-                'tweet_msg' => 'required' //Todo: comfirm what rules are needed to validate msg 
-            ]);
+            $user = $request->session()->get('user_id');
 
-            if ($validator->fails())
-            {
-                return Redirect::to('sendTwitter')->withErrors($validator);
-            }
+            $record = userInfo::where('id', $user)->first();
 
-            else
-            {
-                $login_user = $request->session()->get('user_id');
+            $tweet_msg = $request->input('tweet_msg');
 
-                $record = userInfo::where('id', $login_user)->first();
+            $sendTweet_msg = new sendTweet_msg();
 
-                $tweet_msg = $request->input('tweet_msg');
+            $sendTweet_msg->user_id = $user;
 
-                $sendTweet_msg = new sendTweet_msg();
+            $sendTweet_msg->tweet_msg = $tweet_msg;
 
-                $sendTweet_msg->user_id = $login_user;
+            $sendTweet_msg->email = $request->session()->get('email');
 
-                $sendTweet_msg->tweet_msg = $tweet_msg;
+            $sendTweet_msg->name = $record->name;
 
-                $sendTweet_msg->email = $request->session()->get('email');
+            $sendTweet_msg->save();
 
-                $sendTweet_msg->name = $record->name;
+            dd($user);
 
-                $sendTweet_msg->save();
-
-                return Redirect::to('profile?user_id=' . $login_user); // Todo: redirect to his timeline page.
-            }
+            return Redirect::to('profile?user_id=' . $user); // Todo: redirect to his timeline page.
         }
+        
     }
 }

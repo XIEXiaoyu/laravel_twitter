@@ -16,9 +16,9 @@
 // });
 
 
-Route::get('/login', 'adminController@login_show');
+Route::get('/login', 'adminController@login_display');
 
-Route::post('/login', 'adminController@login_login');
+Route::post('/login', 'adminController@login_process');
 
 Route::get('/register', 'adminController@register_show');
 
@@ -28,15 +28,15 @@ Route::get('/sendTwitter', 'tweetController@sendTwitter_show');
 
 Route::post('/sendTwitter', 'tweetController@sendTwitter_send');
 
-Route::get('/profile', 'tweetsController@profile_show');
+Route::get('/profile', 'tweetsController@profile_display');
 
 Route::post('/profile', 'tweetsController@profile_follow');
 
 Route::get('/timeline', 'tweetsController@timeline_show');
 
-Route::get('/preference', 'adminController@preference');
+Route::get('/profile_and_settings', 'adminController@display');
 
-Route::post('/abc', 'adminController@xyz');
+Route::post('/profile_and_settings', 'adminController@processing');
 
 Route::get('/all_users', 'followController@display_all_user');
 
