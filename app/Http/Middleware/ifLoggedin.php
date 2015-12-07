@@ -15,7 +15,7 @@ class ifLoggedin
      */
     public function handle($request, Closure $next)
     {
-        if(! $request->session()->get('user_id'))
+        if(! $request->session()->get('me_id'))
         {
             return redirect('login');
         }

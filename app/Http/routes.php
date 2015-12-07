@@ -15,18 +15,19 @@
 //     return view('welcome');
 // });
 
+Route::get('/register', 'adminController@register_display');
+
+Route::post('/register', 'adminController@register_process');
 
 Route::get('/login', 'adminController@login_display');
 
 Route::post('/login', 'adminController@login_process');
 
-Route::get('/register', 'adminController@register_show');
+Route::get('/logout', 'adminController@logout');
 
-Route::post('/register', 'adminController@register_addUser');
+Route::get('/sendTwitter', 'tweetController@sendTwitter_display');
 
-Route::get('/sendTwitter', 'tweetController@sendTwitter_show');
-
-Route::post('/sendTwitter', 'tweetController@sendTwitter_send');
+Route::post('/sendTwitter', 'tweetController@sendTwitter_process');
 
 Route::get('/profile', 'tweetsController@profile_display');
 
@@ -44,4 +45,3 @@ Route::get('/who_to_follow', 'followController@display_unfollowed');
 
 Route::get('/already_followed', 'followController@display_followed');
 
-Route::get('/logout', 'adminController@logout');

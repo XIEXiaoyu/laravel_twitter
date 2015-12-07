@@ -21,13 +21,8 @@ class tweetsController extends Controller
     
     public function profile_display(Request $request)
     {
-        if(empty($request->session()->get('user_id')))
-        {
-            return Redirect::to('login');
-        }
-
         // 'me' is the login user
-        $me = $request->session()->get('user_id');
+        $me = $request->session()->get('me_id');
 
         // 'me' is visiting the the profile belongs to the user_id  
         $user_id = $request->get('user_id');
@@ -75,40 +70,27 @@ class tweetsController extends Controller
 
     public function profile_follow(Request $request)
     {
-        if(empty($request->session()->get('user_id')))
-        {
-            return Redirect::to('login');
-        }
-        else
-        {
-            // me
-            $me = $request->session()->get('user_id');
+        // me
+        $me = $request->session()->get('me_id');
 
-            // the person that 'me' wants to follow
-            $follow_who = $request->input('follow_who');
+        // the person that 'me' wants to follow
+        $follow_who = $request->input('follow_who');
 
-            // save following action to database
-            $follow_relation = new follow_relation;
+        // save following action to database
+        $follow_relation = new follow_relation;
 
-            $follow_relation->user_id = $me;
-            $follow_relation->follower = $follow_who;
+        $follow_relation->user_id = $me;
+        $follow_relation->follower = $follow_who;
 
-            $follow_relation->save();
+        $follow_relation->save();
 
-            // return to profile page
-            return Redirect::to('profile?user_id=' . $follow_who);
-        }
+        // return to profile page
+        return Redirect::to('profile?user_id=' . $follow_who);
     }
 
     public function timeline_show(Request $request)
-    {
-       if(empty($request->session()->get('user_id')))
-        {
-            return Redirect::to('login');
-        }
-
-    
-        $login_user = $request->session()->get('user_id');
+    {   
+        $login_user = $request->session()->get('me_id');
 
         $all_login_user_followed = follow_relation::where('user_id', $login_user)
                                     ->get();
@@ -147,7 +129,6 @@ class tweetsController extends Controller
         return view('tweets.timeline', [
             'all_followed_posts' => $all_followed_posts, 
             'all_followed_userInfo' => $all_followed_userInfo,
-        ]);           
-        
+        ]);                  
     }
 }

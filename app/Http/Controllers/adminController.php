@@ -15,56 +15,12 @@ use App\Http\Controllers\Controller;
 
 class adminController extends Controller
 {
-    public function login_display()
-    {    	
-        return view('admin.login');
-    }
-
-    public function login_process(Request $request)
+    public function register_display()
     {
-        // get data from post
-        $email = $request->input('email');
-        $password= $request->input('password');
-
-        // Compare if the email and password are compatible with the database records
-        $user = userInfo::where('email', $email)->first();
-
-        if($user == null)
-        {
-           $error_msg = "The email is not correct, please try again.";
-           return Redirect::to('login')->with('login_error_msg', $error_msg);
-        }
-        else
-        {           
-            if($user->password != $password)
-            {
-                $error_msg = "The password is not correct, please try again.";
-                return Redirect::to('login')->with('login_error_msg', $error_msg);
-            }
-            else
-            {
-                Session::put('email', $user->email);
-                Session::put('name', $user->name); 
-                Session::put('user_id', $user->id);
-
-                return Redirect::to('profile?user_id=' . $user->id);
-            }
-        }
+        return view('admin.register');
     }
 
-    public function logout(Request $request)
-    {
-        $request->session()->flush();
-
-        return Redirect::to('login');
-    }
-
-    public function register_show()
-    {
-    	return view('admin.register');
-    }
-
-    public function register_addUser(Request $request)
+    public function register_process(Request $request)
     {
         $validator = Validator::make($request->all(),[
             'email' => 'required|email|unique:userInfo,email',
@@ -98,14 +54,58 @@ class adminController extends Controller
         }
     }
 
+    public function login_display()
+    {    	
+        return view('admin.login');
+    }
+
+    public function login_process(Request $request)
+    {
+        // get data from post
+        $email = $request->input('email');
+        $password= $request->input('password');
+
+        // Compare if the email and password are compatible with the database records
+        $me = userInfo::where('email', $email)->first();
+
+        if($me == null)
+        {
+           $error_msg = "The email is not correct, please try again.";
+           return Redirect::to('login')->with('error_msg', $error_msg);
+        }
+        else
+        {           
+            if($me->password != $password)
+            {
+                $error_msg = "The password is not correct, please try again.";
+                return Redirect::to('login')->with('error_msg', $error_msg);
+            }
+            else
+            {
+                Session::put('email', $me->email);
+                Session::put('name', $me->name); 
+                Session::put('me_id', $me->id);
+
+                return Redirect::to('profile?user_id=' . $me->id);
+            }
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+
+        return Redirect::to('login');
+    }
+
     public function display(Request $request)
     {
-        if(empty($request->session()->get('user_id')))
+        if(empty($request->session()->get('me_id')))
         {
             return Redirect::to('login');
         }  
           
-        $user_id = $request->session()->get('user_id'); 
+        $user_id = $request->session()->get('me_id'); 
 
         $user = userInfo::where('id', $user_id)->first();
 
@@ -114,12 +114,12 @@ class adminController extends Controller
 
     public function processing(Request $request)
     {
-        if(empty($request->session()->get('user_id')))
+        if(empty($request->session()->get('me_id')))
         {
             return Redirect::to('login');
         }
 
-        $user_id = $request->session()->get('user_id');
+        $user_id = $request->session()->get('me_id');
         $signature = $request->input('signature');
     
         userInfo::where('id', $user_id)

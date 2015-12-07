@@ -13,11 +13,11 @@
 			<nav>
 				<ul>
 					<li class="selected">					
-						<a href="{{ url('timeline?user_id=' . session('user_id')) }}"><span class="icon-home3 icon"></span>timeline</a>
+						<a href="{{ url('timeline?user_id=' . session('me_id')) }}"><span class="icon-home3 icon"></span>timeline</a>
 					</li>
 					<li>						
 						<a href="{{ url('profile?user_id=' . session
-						('user_id')) }}"><span class="icon-drawer icon"></span>profile</a>
+						('me_id')) }}"><span class="icon-drawer icon"></span>profile</a>
 					</li>
 					<li>						
 						<a href=""><span class="icon-heart icon"></span>Favorites</a>

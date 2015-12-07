@@ -20,20 +20,15 @@ class tweetController extends Controller
         $this->middleware('log');
     }
 
-    public function sendTwitter_show(Request $request)
+    public function sendTwitter_display(Request $request)
     {   
-        $user_id = $request->session()->get('user_id');
+        $user_id = $request->session()->get('me_id');
         $user = userInfo::where('id', $user_id)->first();
         return view('tweet.sendTwitter', ['user' => $user]);   	
     }
 
-    public function sendTwitter_send(Request $request)
+    public function sendTwitter_process(Request $request)
     {
-        if(empty($request->session()->get('user_id')))
-        {
-            return Redirect::to('login');
-        }
-
         // 创建一个数据表，名叫sendTweet_msg，里面有id, email, tweet_msg
         // 收到post后，把tweet_msg存到数据表里面
         $validator = Validator::make($request->all(),[
@@ -47,7 +42,7 @@ class tweetController extends Controller
 
         else
         {
-            $user = $request->session()->get('user_id');
+            $user = $request->session()->get('me_id');
 
             $record = userInfo::where('id', $user)->first();
 

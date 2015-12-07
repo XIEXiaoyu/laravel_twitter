@@ -5,8 +5,8 @@
 <div class="wrapper">
 	<div class="content">	
 		<p class="form_title">Login to twitter</p>	
-		@if(session('login_error_msg'))
-		<p class="error_message">{{ session('login_error_msg') }}</p>
+		@if(session('error_msg'))
+		<p class="error_message">{{ session('error_msg') }}</p>
 		@else
 		<p class="below_form_title">Start taking notes today</p>
 		@endif
