@@ -15,6 +15,11 @@ use App\Http\Controllers\Controller;
 
 class tweetController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('log');
+    }
+
     public function sendTwitter_show(Request $request)
     {   
         $user_id = $request->session()->get('user_id');

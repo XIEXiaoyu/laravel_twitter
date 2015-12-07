@@ -13,6 +13,11 @@ use Redirect;
 
 class followController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('log');
+    }
+    
 	public function display_all_user(Request $request)
 	{
         if(empty($request->session()->get('user_id')))

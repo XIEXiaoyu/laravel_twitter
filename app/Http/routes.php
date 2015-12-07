@@ -34,9 +34,9 @@ Route::post('/profile', 'tweetsController@profile_follow');
 
 Route::get('/timeline', 'tweetsController@timeline_show');
 
-Route::get('/profile_and_settings', 'adminController@display');
+Route::get('/profile_and_settings', ['middleware'=>'log' ,'uses' => 'adminController@display']);
 
-Route::post('/profile_and_settings', 'adminController@processing');
+Route::post('/profile_and_settings', ['middleware'=>'log' ,'uses' => 'adminController@processing']);
 
 Route::get('/all_users', 'followController@display_all_user');
 

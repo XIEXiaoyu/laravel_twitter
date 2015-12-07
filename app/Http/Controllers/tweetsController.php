@@ -14,6 +14,11 @@ use Redirect;
 
 class tweetsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('log');
+    }
+    
     public function profile_display(Request $request)
     {
         if(empty($request->session()->get('user_id')))

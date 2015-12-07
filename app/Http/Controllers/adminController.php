@@ -45,7 +45,7 @@ class adminController extends Controller
             {
                 Session::put('email', $user->email);
                 Session::put('name', $user->name); 
-                Session::put('me_id', $user->id);
+                Session::put('user_id', $user->id);
 
                 return Redirect::to('profile?user_id=' . $user->id);
             }
