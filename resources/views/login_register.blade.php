@@ -9,7 +9,7 @@
 <body>
 	<div class="heading">
 		<header>			
-			<a href="" class="note"><span class="icon-quill"></span>Notes</a>
+			<a href="" class="about"><span class="icon-quill"></span>About</a>
 			<nav>
 				<ul>
 					<li>
