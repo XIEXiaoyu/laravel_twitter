@@ -47,7 +47,7 @@ class functionLinksController extends Controller
 
 	        $tweet->like = $like;
 	        $tweet->save();
-   		}
+   		
 
         return Redirect::to('profile?user_id=' . $user_id);
     }
