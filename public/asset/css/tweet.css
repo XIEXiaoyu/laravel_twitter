@@ -42,6 +42,17 @@ header {
 	margin-right: auto;
 }
 
+.note
+{
+	font-weight: 400;
+	float: left;
+	font-size: 20px;
+	width: 140px;
+	line-height: 49px;
+	padding-left: 1px;
+	color: #2e2e2e;
+}
+
 .about {
 	font-weight: 400;
 	float: left;
