@@ -99,46 +99,36 @@ class adminController extends Controller
     }
 
     public function display(Request $request)
-    {
-        if(empty($request->session()->get('me_id')))
-        {
-            return Redirect::to('login');
-        }  
-          
-        $user_id = $request->session()->get('me_id'); 
+    {          
+        $me_id = $request->session()->get('me_id'); 
 
-        $user = userInfo::where('id', $user_id)->first();
+        $me = userInfo::where('id', $me_id)->first();
 
-        return view('admin.profile_and_settings', ['user' => $user]);
+        return view('admin.profile_and_settings', ['me' => $me]);
     }
 
     public function processing(Request $request)
     {
-        if(empty($request->session()->get('me_id')))
-        {
-            return Redirect::to('login');
-        }
-
-        $user_id = $request->session()->get('me_id');
+        $me_id = $request->session()->get('me_id');
         $signature = $request->input('signature');
     
-        userInfo::where('id', $user_id)
+        userInfo::where('id', $me_id)
           ->update(['signature' => $signature]);
 
         $filename = $_FILES['pro_img']['tmp_name'];
         if(is_uploaded_file($filename))
         {
-            $destination = public_path() . '/asset/img/' . $user_id . '.jpg';
+            $destination = public_path() . '/asset/img/' . $me_id . '.jpg';
             $filename = $_FILES['pro_img']['tmp_name'];
             move_uploaded_file($filename, $destination);
 
             // save $destination to database table userInfo
-            $user_info = new userInfo;
-            $path = '/asset/img/' . $user_id . '.jpg';
-            $user_info::where('id', $user_id)
+            $me = new userInfo;
+            $path = '/asset/img/' . $me_id . '.jpg';
+            $me::where('id', $me_id)
             ->update(['pro_img_path' => $path]);
         }
   
-        return Redirect::to('profile?user_id='. $user_id); 
+        return Redirect::to('profile?user_id='. $me_id); 
     }
 }

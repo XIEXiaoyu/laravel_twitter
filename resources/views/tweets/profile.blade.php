@@ -32,7 +32,7 @@
 			@if($isMyself == false)
 			<div class="follow">
 				@if($isFollowed == false)
-				<form action="{{ 'profile?user_id=' . $me }}" method="post">
+				<form action="{{ 'profile?user_id=' . $me_id }}" method="post">
 					<input type="hidden" name="_token" value="{!! csrf_token() !!}">
 					<input type="hidden" name="follow">
 					<input type="hidden" name="follow_who" value="{{ $user->id }}">
@@ -44,32 +44,14 @@
 			</div>
 			@endif
 
-			@if (count($posts) == 0)
+			@if (count($tweets) == 0)
 			<p class="no_post">No posts by now.</p>
 			@else
-			@foreach ($posts as $post)
+			@foreach ($tweets as $tweet)
 			<div class="tweet">
-				<div class="left_photo">
-					<img src="{{ $user->pro_img_path }}" alt="Photograph of Zhiyan" class="profile-photo">
-				</div>
-				<div class="right_text">
-					<p class="twitterer">{{ $user->name }}</p>
-					<p class="at_message">{{ '@' . $user->user_name }} · {{ $post->created_at}}</p>
-					<p class="twitter_message">{{ $post->tweet_msg}}
-					</p>
-					<div class="function_links">
-						<ul>
-							<li class="reply-func">
-								<a href="url"><span class="icon-reply icon-func"></span>Reply</a>
-							</li>
-							<li>
-								<a href=""><span class="icon-like icon-func"></span>Like</a>
-							</li>
-							<li>
-								<a href=""><span class="icon-share2 icon-func"></span>Share</a>
-							</li>
-						</ul>
-					</div>
+				@include('partials.user-info', ['user' => $user, 'tweet' => $tweet])
+
+				@include('partials.function-links', ['tweet' => $tweet])
 
 				</div>
 			</div>

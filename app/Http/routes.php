@@ -33,7 +33,13 @@ Route::get('/profile', 'tweetsController@profile_display');
 
 Route::post('/profile', 'tweetsController@profile_follow');
 
-Route::get('/timeline', 'tweetsController@timeline_show');
+Route::get('/like', 'functionLinksController@like');
+
+Route::get('/reply', 'replyController@reply_display');
+
+Route::post('/reply', 'replyController@reply_process');
+
+Route::get('/timeline', 'tweetsController@timeline_display');
 
 Route::get('/profile_and_settings', ['middleware'=>'log' ,'uses' => 'adminController@display']);
 

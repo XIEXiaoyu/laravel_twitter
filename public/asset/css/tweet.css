@@ -134,6 +134,10 @@ twitter message
 	font-weight: 300;
 }
 
+.tweet_reply{
+	background: #ffffff;
+}
+
 .left_photo {
 	float: left;
 	margin-right: 25px;
@@ -153,7 +157,6 @@ twitter message
 }
 
 .twitterer {
-	float: left;
 	margin: 0;
 	color: #343434;
 	font-weight: 400;
@@ -165,6 +168,7 @@ twitter message
 	padding-left: 5px;
 	margin: 0;
 	color: #808080;
+	clear: right;
 }
 
 .twitter_message {
@@ -626,17 +630,20 @@ signature
 	display: inline-block;
 }
 
-.tweets
+.tweet_reply
+{
+	background: #E0E0E0;
+}
+
+.reply_form
+{
+	border: 1px solid red;
+    border-radius: 5px;
+    width: 646px;
+    height: 40px;
+}
+
+.like_p
 {
 	
-}
-
-.following
-{
-
-}
-
-.followers
-{
-
 }

@@ -6,7 +6,7 @@
 	<section>
 		<div class="post new_post">
 			<div class="left_photo">
-				<img src="{{'asset/img/73.jpg'}}" alt="Photograph of Chris" class="profile-photo">
+				<img src="{{ $me->pro_img_path }}" alt="Photograph of Chris" class="profile-photo">
 			</div>
 
 			<div class="right_text form">

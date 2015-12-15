@@ -4,14 +4,14 @@
 
 <div class="wrapper">
 	
-	@foreach ($all_followed_posts as $post)
+	@foreach ($followed_posts as $post)
 	<div class="tweet">
 		<div class="left_photo">
-			<img src="/asset/img/zhiyan_head.png" alt="Photograph of Zhiyan" class="profile-photo">
+			<img src="{{ $followed_userInfo[$post->user_id]->pro_img_path }}" alt="Photograph of {{ $followed_userInfo[$post->user_id]->name }}" class="profile-photo">
 		</div>
 		<div class="right_text">
-			<p class="twitterer">{{ $all_followed_userInfo[$post->user_id]->name }}</p>
-			<p class="at_message">{{ '@ ' . $all_followed_userInfo[$post->user_id]->user_name . ' ' . $post->created_at }}</p>
+			<p class="twitterer">{{ $followed_userInfo[$post->user_id]->name }}</p>
+			<p class="at_message">{{ '@ ' . $followed_userInfo[$post->user_id]->user_name . ' ' . $post->created_at }}</p>
 			<p class="twitter_message">
 				{{ $post->tweet_msg }}
 			</p>
@@ -32,7 +32,7 @@
 	</div>
 	@endforeach	
 
-   	{!! $all_followed_posts->render() !!}
+   	{!! $followed_posts->render() !!}
 
 </div>  <!-- end of wrapper -->
 

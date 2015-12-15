@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Validator;
 use Redirect;
-use App\sendTweet_msg;
+use App\Tweet;
 use Session;
 use App\userInfo;
 
@@ -22,14 +22,14 @@ class tweetController extends Controller
 
     public function sendTwitter_display(Request $request)
     {   
-        $user_id = $request->session()->get('me_id');
-        $user = userInfo::where('id', $user_id)->first();
-        return view('tweet.sendTwitter', ['user' => $user]);   	
+        $me_id = $request->session()->get('me_id');
+        $me = userInfo::where('id', $me_id)->first();
+        return view('tweet.sendTwitter', ['me' => $me]);   	
     }
 
     public function sendTwitter_process(Request $request)
     {
-        // 创建一个数据表，名叫sendTweet_msg，里面有id, email, tweet_msg
+        // 创建一个数据表，名叫tweets，里面有id, message
         // 收到post后，把tweet_msg存到数据表里面
         $validator = Validator::make($request->all(),[
             'tweet_msg' => 'required' //Todo: comfirm what rules are needed to validate msg 
@@ -42,27 +42,18 @@ class tweetController extends Controller
 
         else
         {
-            $user = $request->session()->get('me_id');
+            $me = $request->session()->get('me_id');
 
-            $record = userInfo::where('id', $user)->first();
-
+            $record = userInfo::where('id', $me)->first();
             $tweet_msg = $request->input('tweet_msg');
+            $tweet = new Tweet();
+            $tweet->user_id = $me;
+            $tweet->message = $tweet_msg;
+            $tweet->save();
+            $tweet->thread_id = $tweet->id;
+            $tweet->save();
 
-            $sendTweet_msg = new sendTweet_msg();
-
-            $sendTweet_msg->user_id = $user;
-
-            $sendTweet_msg->tweet_msg = $tweet_msg;
-
-            $sendTweet_msg->email = $request->session()->get('email');
-
-            $sendTweet_msg->name = $record->name;
-
-            $sendTweet_msg->save();
-
-            dd($user);
-
-            return Redirect::to('profile?user_id=' . $user); // Todo: redirect to his timeline page.
+            return Redirect::to('profile?user_id=' . $me); // Todo: redirect to his timeline page.
         }
         
     }

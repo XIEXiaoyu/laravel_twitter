@@ -31,7 +31,7 @@
 				</ul>
 			</nav>
 			<a href="{{ url('profile_and_settings') }}"><img src="
-				{{ $user->pro_img_path }}" alt="Photograph of {{ $user->name }}" class="nav-photo">
+				{{ $me->pro_img_path }}" alt="Photograph of {{ $me->name }}" class="nav-photo">
 			</a>
 		</header>
     </div>
