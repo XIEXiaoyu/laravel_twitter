@@ -11,10 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/register', 'adminController@register_display');
 
 Route::post('/register', 'adminController@register_process');
