@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Tweet;
 use App\follow_relation;
-use App\userInfo;
+use App\User;
 use Redirect;
 
 class tweetsController extends Controller
@@ -42,10 +42,10 @@ class tweetsController extends Controller
         }
 
         // get the user's information
-        $user = userInfo::where('id', $user_id)->first();
+        $user = User::where('id', $user_id)->first();
 
         // get 'me' info
-        $me = userInfo::where('id', $me_id)->first();
+        $me = User::where('id', $me_id)->first();
 
         // get the user's posts
         $tweets = Tweet::where('user_id', $user_id)
@@ -99,7 +99,7 @@ class tweetsController extends Controller
         $me_id = $request->session()->get('me_id');
         
         // get 'me' info
-        $me = userInfo::where('id', $me_id)->first();
+        $me = User::where('id', $me_id)->first();
 
         $user_id = $request->input('user_id');
 
@@ -135,7 +135,7 @@ class tweetsController extends Controller
         $cond2 .= ")";
 
         // To get all the followed users' detail personal information
-        $followed = userInfo::whereraw($cond2)
+        $followed = User::whereraw($cond2)
                                 ->orderBy('created_at', 'desc')
                                 ->get();
 
