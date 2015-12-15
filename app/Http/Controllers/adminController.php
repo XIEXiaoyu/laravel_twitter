@@ -9,7 +9,7 @@ use Redirect;
 use Session;
 use DB;
 
-use App\userInfo;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -23,7 +23,7 @@ class adminController extends Controller
     public function register_process(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'email' => 'required|email|unique:userInfo,email',
+            'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed',
             'password_confirmation'=>'Required',
             'name' => 'required'
@@ -41,14 +41,14 @@ class adminController extends Controller
             $password = $request->input('password');
             $name = $request->input('name');
 
-            $userInfo = new userInfo();
-            $userInfo->email = $email;
-            $userInfo->user_name = $userName;
-            $userInfo->password = $password;
-            $userInfo->name = $name;
-            $userInfo->pro_img_path = '/asset/img/default_profile.png';
+            $user = new User();
+            $user->email = $email;
+            $user->user_name = $userName;
+            $user->password = $password;
+            $user->name = $name;
+            $user->pro_img_path = '/asset/img/default_profile.png';
 
-            $userInfo->save();
+            $user->save();
 
             return Redirect::to('login');
         }
@@ -66,7 +66,7 @@ class adminController extends Controller
         $password= $request->input('password');
 
         // Compare if the email and password are compatible with the database records
-        $me = userInfo::where('email', $email)->first();
+        $me = User::where('email', $email)->first();
 
         if($me == null)
         {
@@ -102,7 +102,7 @@ class adminController extends Controller
     {          
         $me_id = $request->session()->get('me_id'); 
 
-        $me = userInfo::where('id', $me_id)->first();
+        $me = User::where('id', $me_id)->first();
 
         return view('admin.profile_and_settings', ['me' => $me]);
     }
@@ -112,7 +112,7 @@ class adminController extends Controller
         $me_id = $request->session()->get('me_id');
         $signature = $request->input('signature');
     
-        userInfo::where('id', $me_id)
+        User::where('id', $me_id)
           ->update(['signature' => $signature]);
 
         $filename = $_FILES['pro_img']['tmp_name'];
@@ -122,8 +122,8 @@ class adminController extends Controller
             $filename = $_FILES['pro_img']['tmp_name'];
             move_uploaded_file($filename, $destination);
 
-            // save $destination to database table userInfo
-            $me = new userInfo;
+            // save $destination to database table users
+            $me = new User;
             $path = '/asset/img/' . $me_id . '.jpg';
             $me::where('id', $me_id)
             ->update(['pro_img_path' => $path]);
