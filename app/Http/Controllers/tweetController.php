@@ -8,7 +8,7 @@ use Validator;
 use Redirect;
 use App\Tweet;
 use Session;
-use App\userInfo;
+use App\User;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -23,7 +23,7 @@ class tweetController extends Controller
     public function sendTwitter_display(Request $request)
     {   
         $me_id = $request->session()->get('me_id');
-        $me = userInfo::where('id', $me_id)->first();
+        $me = User::where('id', $me_id)->first();
         return view('tweet.sendTwitter', ['me' => $me]);   	
     }
 
@@ -44,7 +44,7 @@ class tweetController extends Controller
         {
             $me = $request->session()->get('me_id');
 
-            $record = userInfo::where('id', $me)->first();
+            $record = User::where('id', $me)->first();
             $tweet_msg = $request->input('tweet_msg');
             $tweet = new Tweet();
             $tweet->user_id = $me;

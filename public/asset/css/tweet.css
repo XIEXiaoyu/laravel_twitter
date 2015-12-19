@@ -3,7 +3,8 @@ GENERAL
  **********************************/
 
 body {
-	background-color: #f7f7f7;
+	background-color: #f5f8fa;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .below_heading
@@ -21,113 +22,162 @@ a {
   text-decoration: none;
 }
 
+.icon-quill {
+	color: #3b3b3b;
+	font-size: 32px;
+	vertical-align: middle;
+	margin-right: 20px;
+}
 
 
 /**********************************
 HEADING
  **********************************/
 
-.heading {
-	width: 100%;
-	height: 49px;
-	background-color: #d8d8d8;
-	border-bottom: 1px solid #cccccc;
-	margin-bottom: 50px;
-}
-
 header {
-	display: block;
-	width: 798px;
-	margin-left: auto;
-	margin-right: auto;
+	height: 46px;
+	background-color: #fff;
+	background: red;
+	border: none;
 }
 
-.note
+.container
 {
-	font-weight: 400;
+	width: 90%;
+	margin: 0 5%;
+}
+
+.nav {
 	float: left;
-	font-size: 20px;
-	width: 140px;
-	line-height: 49px;
-	padding-left: 1px;
-	color: #2e2e2e;
+	background: yellolw;
 }
 
-.about {
-	font-weight: 400;
-	float: left;
-	font-size: 20px;
-	width: 140px;
-	line-height: 49px;
-	padding-left: 1px;
-	color: #2e2e2e;
-}
-
-.icon-quill {
-	color: #3b3b3b;
-	font-size: 30px;
-	vertical-align: middle;
-	margin-right: 20px;
-}
-
-
-
-/**********************************
-NAVIGATION
- **********************************/
-
-nav {
-	float: left;
-}
-
-nav ul {
+.nav ul {
 	list-style: none;
 	margin: 0;
-	padding-left: 0;
+	padding-left: 0px;
 }
 
-nav li {
+.nav li {
 	display: inline-block;
-	line-height: 49px;
+	line-height: 46px;
 	padding-left: 15px;
 	padding-right: 15px;
 }
 
-nav a {
-	color: #2e2e2e;
-	font-size: 16px;
-	font-weight: 300;
-	display: inline;
+.text {
+	margin-top: 17px;
+	font-size: 13px;
+	font-weight: 500;
 	color: #575757;
 }
 
-.icon {
-	margin-right: 10px; /* for the distance between the icon and the text s*/
-}
-
-.selected {
-	height: 50px;
-	background-color: #f7f7f7;
-	border-bottom: none;
-}
-
-.selected a {
-	color: #2e2e2e;
-}
-
-.nav-photo {
+.global_logo_wrapper
+{
 	display: inline-block;
-	margin-top: 7px;
-  	float: right;
-  	width: 35px;
-  	border-radius: 100%;
+	background-color: red;
 }
 
+header h1
+{
+	position: absolute;
+	left: 50%;
+	margin-left: -16px;
+	font-size:;
+}
+
+.icon_global {
+	color: blue;
+	font-size: 20px;
+	vertical-align: middle;
+}
+
+.pull_right
+{
+	float: right;
+	height: 46px;
+}
+
+.global_search_wrapper
+{
+	float:left;
+
+	margin-top: 7px;
+	margin-right: 10px;
+}
+
+.global_search_form {
+	display: block;
+}
+
+.global_search_input {
+	border: 1px solid #e1e8ed;
+	height: 19px;
+	width: 132px;
+	outline: none;
+	border-radius: 21px;
+	background-color: #f5f8fa;
+	padding-top: 5px;
+	padding-left: 12px;
+	padding-bottom: 6px;
+	margin: 0;
+	font-size: 12px;
+	margin-right: 10px;
+}
+
+.global_search_submit {
+	float: right;
+	height: 32px;
+	border-radius: 5px;
+	border: 1px solid transparent;
+	padding-left: 14px;
+	padding-right: 14px;
+}
+
+.global_profile_wrapper
+{
+	float: left;
+	margin-right: 10px;
+}
+
+.global_profile {
+  	width: 32px;
+  	height: 32px;
+	margin: 7px 0;
+	border-radius: 5px;
+}
+
+.global_tweet_wrapper
+{
+	margin-top: 7px;
+	float: left;
+}
+
+.global_tweet 
+{
+	height: 32px;
+	background: #0084B4;
+	color: white;
+	border: 1px solid transparent;
+	border-radius: 5px;
+	padding-left: 14px;
+	padding-right: 13px;
+	opacity: 1;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+.icon {
+	margin-left: 3px;
+	margin-right: 5px; /* for the distance between the icon and the text s*/
+}
 
 
 /*************************************
 twitter message
 **************************************/
+
+
 
 .tweet {
 	float: left;
