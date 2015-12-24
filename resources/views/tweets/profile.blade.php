@@ -1,6 +1,44 @@
 @extends('app')
 
 @section('content')
+<div class="outer">
+	<div class="page_container">
+		<div class="profile_left">
+			<div class="profile_card">
+				<p class="profile_card_bg"></p>
+				<div class="profile_card_content">
+					<a class="profile_card_image_wrapper" href="#">
+						<img class="Profile_card_img" src="{{ $me->pro_img_path }}" alt="">
+					</a>
+					<div class="DashboardProfileCard_userFields">
+						<div class="DashboardProfileCard-name">
+							
+						</div>
+						<span>
+							<a class="u-textInheritColor" href="#">
+								{{ $me->name }}
+							</a>
+						</span>
+						
+					</div>
+					<div class="ProfileCardStats">
+						
+					</div>
+					
+				</div>				
+			</div>
+			
+		</div>
+
+		<div class="main">
+			
+		</div>
+
+		<div class="dashboard dashboard-right">
+			
+		</div>		
+	</div>
+</div>
 <div class="below_heading">
 	<div class="banner"></div>
 	<div class="follow_and_tweets">

@@ -1,0 +1,21 @@
+@media screen and (min-width: 480px)
+{
+	body{
+		background-color: green;
+	}
+	/*
+	two column layout
+	*/		
+}
+
+@media screen and (min-width: 660px)
+{
+	body{
+		background-color: #f5f8fa;
+	}	
+}
+
+@media screen and (min-width: 1236px)
+{
+
+}

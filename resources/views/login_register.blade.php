@@ -4,6 +4,7 @@
 	<link href="{{ 'asset/css/normalize.css' }}" rel="stylesheet">
 	<link href="{{ 'asset/css/tweet.css' }}" rel="stylesheet" type="text/css">
 	<link href="{{ 'asset/icomoon/style.css' }}" rel="stylesheet" type="text/css">
+	<link href="/asset/css/responsive.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
