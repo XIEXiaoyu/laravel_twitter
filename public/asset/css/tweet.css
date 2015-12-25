@@ -310,53 +310,29 @@ dashboard left
 	float: left;
 }
 
+.stats_links li:nth-child(2){
+	margin-left: 25px;
+}
+
+.stats_links li:nth-child(3){
+	margin-left: 30px;
+}
+
 .links_text{
 	display: block;
-	float: left;
 	color: DarkSlateGray;
 	font-weight: 300;
 	font-size: 15px;
-	position: absolute;
 }
 
 .links_number_text {
 	display: block;
-	float: left;
 	color: #0084B4;
 	font-size: 15px;
 	font-weight: 500;
-	position: absolute;	
-	top: 25px;
 }
 
-.links_tweets{
-	top: 10px;
-	left: 8px;
-}
 
-.links_tweets_number{
-
-	left: 8px;
-}
-
-.links_following{
-	top: 10px;
-	left: 85px;
-}
-
-.links_following_number{
-
-	left: 85px;
-}
-
-.links_followers{
-	top: 10px;
-	left: 180px;
-}
-
-.links_followers_number{
-	left: 180px;
-}
 
 /*************************************
 main
