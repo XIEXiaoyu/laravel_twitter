@@ -5,18 +5,37 @@
 	<div class="page_container">
 		<div class="profile">
 			<div class="profile_bg"></div>
-			<a class="profile_card_img_a" href="#">
-				<img class="Profile_card_img" src="{{ $me->pro_img_path }}" alt="">
-			</a>
-			<a class="profile_card_user" href="#">
-				<span class="profile_card_name">{{ $me->name }}</span>
-				<span class="profile_card_userName">{{ '@' . $me->user_name }}</span>		
-			</a>
-										
-			<div class="ProfileCardStats">
-			</div>				
-		</div>				
-	</div>		
+			<div class="img_name_wrapper">
+				<a class="profile_card_img_a" href="#">
+					<img class="Profile_card_img" src="{{ $me->pro_img_path }}" alt="">
+				</a>
+				<a class="profile_card_user" href="#">
+					<span class="profile_card_name">{{ $me->name }}</span>
+					<span class="profile_card_userName">{{ '@' . $me->user_name }}</span>		
+				</a>
+			</div>
+
+			<ul class="stats_links">
+				<li>
+					<a href="#">
+						<span class="links_text links_tweets">Tweets</span>
+						<span class="links_number_text links_tweets_number">number</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="links_text links_following">Following</span>
+						<span class="links_number_text links_following_number">number</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<span class="links_text links_followers">Followers</span>
+						<span class="links_number_text links_followers_number">number</span>
+					</a>
+				</li>
+			</ul>		
+		</div>						
 
 		<div class="main">
 			

@@ -243,25 +243,28 @@ dashboard left
 
 .profile_bg
 {
-	float: left;
-	width: 100%;
 	background: #0084B4;
+	width: 292px;
 	height: 95px;
-	border-radius: 6px 6px 0 0;
-	margin: 0;
+	border-radius: 4px 4px 0 0;
+	margin: -1px 0 0 -1px;
+}
+
+.img_name_wrapper{
+	position: relative;
+	height: 50px;
 }
 
 .profile_card_img_a{
 	display: block;
-	position: relative;
+	float: left;
+	position: absolute;
 	top: -30px;
-	left: 7px;
+	left: 5px;
 }
 
 .Profile_card_img
 {
-	display: block;
-	float: left;
     height: 68px;
     width: 68px;
     border: 3px solid #fff;
@@ -271,8 +274,8 @@ dashboard left
 .profile_card_user
 {
 	display: block;
-	position: relative;
-	left: 15px;
+	position: absolute;
+	left: 85px;
 	top: 4px;
 }
 
@@ -292,15 +295,68 @@ dashboard left
 	color: SlateGray;
 }
 
-
-.textInheritColor{
-	font-weight: 700;
-    font-size: 18px;
-    line-height: 21px;
-    white-space: nowrap!important;
-    word-wrap: normal!important;
+.stats_links
+{
+	display: block;
+	position: relative;
+	list-style: none;
+	padding: 0 8px;
+	margin:0;
 }
 
+.stats_links li
+{
+	display: block;
+	float: left;
+}
+
+.links_text{
+	display: block;
+	float: left;
+	color: DarkSlateGray;
+	font-weight: 300;
+	font-size: 15px;
+	position: absolute;
+}
+
+.links_number_text {
+	display: block;
+	float: left;
+	color: #0084B4;
+	font-size: 15px;
+	font-weight: 500;
+	position: absolute;	
+	top: 25px;
+}
+
+.links_tweets{
+	top: 10px;
+	left: 8px;
+}
+
+.links_tweets_number{
+
+	left: 8px;
+}
+
+.links_following{
+	top: 10px;
+	left: 85px;
+}
+
+.links_following_number{
+
+	left: 85px;
+}
+
+.links_followers{
+	top: 10px;
+	left: 180px;
+}
+
+.links_followers_number{
+	left: 180px;
+}
 
 /*************************************
 main
