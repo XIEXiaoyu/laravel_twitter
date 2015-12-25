@@ -3,38 +3,26 @@
 @section('content')
 <div class="outer">
 	<div class="page_container">
-		<div class="profile_left">
-			<div class="profile_card">
-				<p class="profile_card_bg"></p>
-				<div class="profile_card_content">
-					<a class="profile_card_image_wrapper" href="#">
-						<img class="Profile_card_img" src="{{ $me->pro_img_path }}" alt="">
-					</a>
-					<div class="DashboardProfileCard_userFields">
-						<div class="DashboardProfileCard-name">
-							
-						</div>
-						<span>
-							<a class="u-textInheritColor" href="#">
-								{{ $me->name }}
-							</a>
-						</span>
-						
-					</div>
-					<div class="ProfileCardStats">
-						
-					</div>
-					
-				</div>				
-			</div>
-			
-		</div>
+		<div class="profile">
+			<div class="profile_bg"></div>
+			<a class="profile_card_img_a" href="#">
+				<img class="Profile_card_img" src="{{ $me->pro_img_path }}" alt="">
+			</a>
+			<a class="profile_card_user" href="#">
+				<span class="profile_card_name">{{ $me->name }}</span>
+				<span class="profile_card_userName">{{ '@' . $me->user_name }}</span>		
+			</a>
+										
+			<div class="ProfileCardStats">
+			</div>				
+		</div>				
+	</div>		
 
 		<div class="main">
 			
 		</div>
 
-		<div class="dashboard dashboard-right">
+		<div class="people">
 			
 		</div>		
 	</div>
