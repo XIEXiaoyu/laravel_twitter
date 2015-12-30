@@ -2,55 +2,56 @@
 
 @section('content')
 
-<div class="wrapper">
-	@foreach ($users as $user)
-	<div class="tweet">
-		<div class="left_photo">
-			<img src="{{'asset/img/zhiyan_head.png'}}" alt="Photograph of Zhiyan" class="profile-photo">
-		</div>
-		<div class="right_text">
-			<p class="twitterer">{{ $user->name }}</p>
-			<p class="at_message">{{ '@' . ' ' . $user->user_name }}</p>
-			<p class="twitter_message">
-				{{ $user->signature }}
-			</p>
-			<div class="follow_who">
-				@if(isset($flag))
-					@if($flag == 'unfollowed')
-					<form action="{{ 'profile' }}" method="post">
-					<input type="hidden" name="_token" value="{!! csrf_token() !!}">
-					<input type="hidden" name="follow_who" value="{{$user->id }}">
-					<input class="follow_submit" type="submit" value="Follow">
-					</form>	
-					@else
-					<button>Already followed</button>
-					@endif
-				@else					
-					@if (in_array($user->id, $unfollowed))
-					<form action="{{ 'profile' }}" method="post">
-					<input type="hidden" name="_token" value="{!! csrf_token() !!}">
-					<input type="hidden" name="follow_who" value="{{$user->id }}">
-					<input class="follow_submit" type="submit" value="Follow">
-					</form>	
-    				@else
-					<button>Already followed</button>
-    				@endif
-				@endif
-			</div>
-		</div>
-	</div>
-	@endforeach
+<div class="outer">
+	<div class="page_container">
+		<div class="not_profile_main">
+			@if(empty($flag))
+				@foreach($users as $user)
+				<div class="tweet">
+					@include('partials.follow_card', ['user' => $user])
 
-	<div class="pre_and_next">
-		<ul>
-			<li class="prev paging">					
-				<a href=""><span class="icon-previous2"></span>Prev</a>
-			</li>
-			<li class="next paging">						
-				<a href="">Next<span class="icon-next2"></span></a>
-			</li>				
-		</ul>
-    </div>
-</div>  <!-- end of wrapper -->
+					<div class="follow_who">
+						@if(in_array($user->id, $unfollowed_ids))
+						@include('partials.follow_card_button')	
+						@else
+						<button>Followed</button>
+						@endif
+					</div>
+				</div>
+				@endforeach
+			@else
+				@if($flag == 'followed')
+					@foreach($users as $user)
+					@include('partials.follow_card', ['user' => $user])
+
+					<div class="follow_who">
+						<button>Already followed</button>
+					</div>
+					@endforeach
+
+				@else	
+					@foreach($users as $user)				
+						<div class="tweet">
+						@include('partials.follow_card', ['user' => $user])
+						<div class="follow_who">
+						@include('partials.follow_card_button')	
+						</div>
+					@endforeach
+				@endif		
+			@endif
+
+			<div class="pre_and_next">
+				<ul>
+					<li class="prev paging">					
+						<a href=""><span class="icon-previous2"></span>Prev</a>
+					</li>
+					<li class="next paging">						
+						<a href="">Next<span class="icon-next2"></span></a>
+					</li>				
+				</ul>
+		    </div>
+		</div>  <!-- end of not_profile_main --> 
+	</div> <!-- end of page_container --> 
+</div>  <!-- end of outer -->
 
 @stop

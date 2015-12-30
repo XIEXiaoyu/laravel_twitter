@@ -547,12 +547,12 @@ profile page right: people
 	line-height: 45px;
 }
 
-.who_to_follow_text
+.who_to_follow_a
 {
 	display: block;
 	float: left;	
 	font-size: 16px;
-	font-weight: 300;
+	font-weight: 500;
 	color: SlateGray;
 	margin: 0 20px 0 15px;
 }
@@ -623,6 +623,55 @@ profile page right: people
 	padding-right: 5px;
 	color: DeepSkyBlue;
 }
+
+
+
+/*************************************
+who to follow page
+**************************************/
+.not_profile_main
+{
+	box-sizing: border-box;	
+	width: 590px;
+	margin: 0 auto;
+}
+
+.follow_card_left_photo
+{
+	width: 62px;
+	float: left;
+	margin: 10px 0 0 10px;
+}
+
+.follow_card_profile_photo{
+	width: 48px;
+	height: 48px;
+	border-radius: 4px;
+}
+
+.follow_card_right_text{
+	width: 350px;
+	float: left;
+}
+
+.follow_who {
+	float: left;
+}
+
+.follow_button button {
+    height: 25px;
+    width: 100px;
+    float: left;
+    background-color: #f5f8fa;
+    color: #292f33;
+    border: 1px solid #e1e8ed;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 3px;
+    padding-top: 4px;
+}
+
 
 
 
@@ -912,11 +961,6 @@ signature
 	border-radius: 4px;
 	line-height: 30px;
 	padding-left: 5px;
-}
-
-.follow_who
-{
-	float: right;
 }
 
 .particulars

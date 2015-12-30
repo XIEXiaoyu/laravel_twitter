@@ -41,7 +41,7 @@ Route::get('/profile_and_settings', ['middleware'=>'log' ,'uses' => 'adminContro
 
 Route::post('/profile_and_settings', ['middleware'=>'log' ,'uses' => 'adminController@processing']);
 
-Route::get('/all_users', 'followController@display_all_user');
+Route::get('/all_users', 'followController@display_all');
 
 Route::get('/who_to_follow', 'followController@display_unfollowed');
 

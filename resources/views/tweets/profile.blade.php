@@ -64,9 +64,10 @@
 
 		<div class="people">
 			<div class="follow_bar">
-				<span class="who_to_follow_text">
+				<a class="who_to_follow_a" href="{{ url('who_to_follow') }}">
 					Who to follow
-				</span>
+				</a>
+
 				<a class="view_all_a" href="{{ url('all_users') }}">
 					View all
 				</a>
@@ -79,10 +80,10 @@
 					<div class="stranger_right_text">
 						<a class="stranger_right_text_up" href="">
 							<span class="stranger_name">
-								Xie Jun
+								{{ $me->name}}
 							</span>
 							<span class="stranger_user_name">
-								{{ '@' . "DaTouLi"}}
+								{{ '@' . $me->user_name }}
 							</span>
 						</a>
 
