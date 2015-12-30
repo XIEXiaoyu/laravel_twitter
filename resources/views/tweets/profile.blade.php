@@ -9,21 +9,21 @@
 				<a class="profile_card_img_a" href="#">
 					<img class="Profile_card_img" src="{{ $me->pro_img_path }}" alt="">
 				</a>
-				<a class="profile_card_user" href="#">
-					<span class="profile_card_name">{{ $me->name }}</span>
-					<span class="profile_card_userName">{{ '@' . $me->user_name }}</span>		
+				<a class="profile_card_user" href="{{ url('profile?user_id=' . $user->id) }}">
+					<span class="profile_card_name">{{ $user->name }}</span>
+					<span class="profile_card_userName">{{ '@' . $user->user_name }}</span>		
 				</a>
 			</div>
 
 			<ul class="stats_links">
 				<li>
-					<a href="#">
+					<a href="{{ url('profile?user_id=' . $user->id) }}">
 						<span class="links_text links_tweets">Tweets</span>
 						<span class="links_number_text links_tweets_number">number</span>
 					</a>
 				</li>
 				<li>
-					<a href="#">
+					<a href="{{ url('already_followed') }}">
 						<span class="links_text links_following">Following</span>
 						<span class="links_number_text links_following_number">number</span>
 					</a>
@@ -38,59 +38,8 @@
 		</div>						
 
 		<div class="main">
-			
-		</div>
-
-		<div class="people">
-			
-		</div>		
-	</div>
-</div>
-<div class="below_heading">
-	<div class="banner"></div>
-	<div class="follow_and_tweets">
-		<ul class="below_banner">
-			<li class="below_banner_links tweets">
-				<a href="{{ url('profile?user_id=' . $user->id) }}">Tweets</a>
-			</li>
-			<li class="below_banner_links following">
-				<a href="{{ url('already_followed') }}">Following</a>
-			</li>
-			<li class="below_banner_links followers">
-				<a href="">Followers</a>
-			</li>
-		</ul>
-	</div>
-	<div class="main_body">
-		<div class="particulars">
-			<img class="particulars_photo" src="{{ $user->pro_img_path }}" alt="">
-			<a class="particulars_name" href="{{ url('profile?user_id=' . $user->id) }}">
-				{{ $user->name }}</a>
-			<a class="particulars_user_name" href="{{ url('profile?user_id=' . $user->id) }}">
-				{{ '@' . $user->user_name }}</a>
-			<p>{{ $user->signature }}</p>
-			<p>{{ 'location' }}</p>
-			<p>{{ 'when joined' }}</p>
-		</div>
-
-		<div class="wrapper">
-			@if($isMyself == false)
-			<div class="follow">
-				@if($isFollowed == false)
-				<form action="{{ 'profile?user_id=' . $me_id }}" method="post">
-					<input type="hidden" name="_token" value="{!! csrf_token() !!}">
-					<input type="hidden" name="follow">
-					<input type="hidden" name="follow_who" value="{{ $user->id }}">
-					<input class="follow_submit" type="submit" value="Follow me">
-				</form>	
-				@else
-				<button class="follow_submit">Already followed</button>
-				@endif	
-			</div>
-			@endif
-
 			@if (count($tweets) == 0)
-			<p class="no_post">No posts by now.</p>
+			<p class="no_tweet">Hi, you have no tweets by now.</p>
 			@else
 			@foreach ($tweets as $tweet)
 			<div class="tweet">
@@ -103,28 +52,47 @@
 			@endforeach
 			@endif
 
-			<div class="pre_and_next">
-				<ul>
-					<li class="prev paging">					
-						<a href=""><span class="icon-previous2"></span>Prev</a>
-					</li>
-					<li class="next paging">						
-						<a href="">Next<span class="icon-next2"></span></a>
-					</li>				
-				</ul>
-		    </div>
-		</div>  <!-- end of wrapper -->
-
-		<div class="persons">
-			<div class="view_all">
-				<p class="who_to_follow">Who to follow</p>
-				<a href="{{ url('all_users') }}">View all</a>
-			</div>
-			<div class="partial_list"></div>
-			<p class="find_friends">Find friends</p>		
+			<ul class="pre_and_next">
+				<li class="prev paging">					
+					<a href=""><span class="icon-previous2"></span>Prev</a>
+				</li>
+				<li class="next paging">		 				
+					<a href="">Next<span class="icon-next2"></span></a>
+				</li>				
+			</ul>
 		</div>
 
-	</div>	<!-- end of main_body -->
-</div>  <!-- end of below_heading -->
+		<div class="people">
+			<div class="follow_bar">
+				<span class="who_to_follow_text">
+					Who to follow
+				</span>
+				<a class="view_all_a" href="{{ url('all_users') }}">
+					View all
+				</a>
+			</div>
+			<div class="strangers">
+				<div class="profile_stranger_card">
+					<div class="stranger_left_photo">
+						<img class="srtanger_left_img" src="{{$me->pro_img_path}}" alt="">
+					</div>
+					<div class="stranger_right_text">
+						<a class="stranger_right_text_up" href="">
+							<span class="stranger_name">
+								Xie Jun
+							</span>
+							<span class="stranger_user_name">
+								{{ '@' . "DaTouLi"}}
+							</span>
+						</a>
+
+						<button class="follow_button"><span class="icon-user-add follow_add"></span>Follow</button>
+						
+					</div>
+				</div>
+			</div>		
+		</div>		
+	</div>
+</div>
 
 @stop
