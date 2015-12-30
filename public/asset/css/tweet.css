@@ -82,6 +82,8 @@ header {
 	margin-top: 15px;
 	margin-right: 3px;
 	color: LightSlateGray;
+	color: RoyalBlue;
+	color: SteelBlue;
 }
 
 .text_home, .text_heart {
@@ -92,6 +94,8 @@ header {
 	margin-top: 19px;
 	margin-right: 30px;
 	color: LightSlateGray;
+	color: RoyalBlue;
+	color:SteelBlue;
 }
 
 header h1
@@ -103,7 +107,7 @@ header h1
 
 .icon_header_center {
 	line-height: 46px;
-	color: RoyalBlue;
+	color: DeepSkyBlue;
 	font-size: 25px;
 	margin: 0;
 }
@@ -617,8 +621,7 @@ profile page right: people
 .follow_add
 {
 	padding-right: 5px;
-	color: DeepSkyBlue ;
-
+	color: DeepSkyBlue;
 }
 
 
