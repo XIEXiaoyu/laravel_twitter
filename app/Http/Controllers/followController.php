@@ -31,33 +31,24 @@ class followController extends Controller
         $me = User::where('id', $me_id)->first(); // $me is used for app.blade.php
 
         // $unfollowed = $me->unfollowed();
-        
-        $followed = follow_relation::where('user_id', $me_id) // $followed is all the uses that 'me' have followed. We can find out all the users that I have not followed by substracting the users that I have followed in all the users.
-                        ->orderBy('created_at', 'desc')        
-                        ->get();
 
-        $cond = "id not in ("; // Suppose 'me' have followed user with id 8 and 9, then we want to construct a condition like: " id not in (8, 9, 0)". There is no user with id 0.
-        foreach($followed as $followed_)
-        {
-            $cond .= $followed_->follower . ',';
-        }
-        $cond .= 0;
-        $cond .= ")";
-        
-        // we are going to get an $unfollowed array, the arrary contains all the users' ids that 'me' has not followed. so that in the view, we could check each id in $all, if the id is in the $unfollowd array, then we display 'following' besides the user. 
-        $unfollowed = User::whereraw($cond)
-                            ->orderBy('created_at', 'desc')
-                            ->get();
+        $follow_servive = new FollowService;   // users that 'me' is not following  
+        $not_following = $follow_servive->notFollowing($me);
 
-        $unfollowed_ids = []; // $users contains all the ids of the users that 'me' haven't followed
-        foreach($unfollowed as $unfollowed_)
+        $unfollowed_ids = []; // $unfollowed_ids contains all the ids of the users that 'me' is not following
+        foreach($not_following as $u)
         {
-            $unfollowed_ids[] = $unfollowed_->id;
+            $unfollowed_ids[] = $u->id;
         }
 
         $flag = null;
 
-        return view('follow_list', ['me' => $me, 'users' => $users, 'unfollowed_ids' => $unfollowed_ids, 'flag' => $flag]);
+        return view('follow_list', [
+            'me' => $me, 
+            'users' => $users, 
+            'unfollowed_ids' => $unfollowed_ids, 
+            'flag' => $flag,
+        ]);
 	}
 
 

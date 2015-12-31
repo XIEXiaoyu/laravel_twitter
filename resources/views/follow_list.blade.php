@@ -20,21 +20,24 @@
 				</div>
 				@endforeach
 			@else
-				@if($flag == 'followed')
+				@if($flag == 'followed')				
 					@foreach($users as $user)
-					@include('partials.follow_card', ['user' => $user])
+						<div class="tweet">
+							@include('partials.follow_card', ['user' => $user])
 
-					<div class="follow_who">
-						<button class="follow_submit">following</button>
-					</div>
+							<div class="follow_who">
+								<button class="follow_submit">following</button>
+							</div>
+						</div>
 					@endforeach
 
 				@else	
 					@foreach($users as $user)				
 						<div class="tweet">
-						@include('partials.follow_card', ['user' => $user])
-						<div class="follow_who">
-						@include('partials.follow_card_button')	
+							@include('partials.follow_card', ['user' => $user])
+							<div class="follow_who">
+							@include('partials.follow_card_button')	
+							</div>
 						</div>
 					@endforeach
 				@endif		
