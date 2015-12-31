@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\follow_relation;
 use Redirect;
+use App\Services\FollowService;
 
 class followController extends Controller
 {
@@ -26,9 +27,12 @@ class followController extends Controller
 
         $me_id = $request->session()->get('me_id');
 
+
         $me = User::where('id', $me_id)->first(); // $me is used for app.blade.php
+
+        // $unfollowed = $me->unfollowed();
         
-        $followed = follow_relation::where('id', $me_id) // $followed is all the uses that 'me' have followed. We can find out all the users that I have not followed by substracting the users that I have followed in all the users.
+        $followed = follow_relation::where('user_id', $me_id) // $followed is all the uses that 'me' have followed. We can find out all the users that I have not followed by substracting the users that I have followed in all the users.
                         ->orderBy('created_at', 'desc')        
                         ->get();
 
@@ -45,7 +49,6 @@ class followController extends Controller
                             ->orderBy('created_at', 'desc')
                             ->get();
 
-
         $unfollowed_ids = []; // $users contains all the ids of the users that 'me' haven't followed
         foreach($unfollowed as $unfollowed_)
         {
@@ -53,62 +56,42 @@ class followController extends Controller
         }
 
         $flag = null;
-        
+
         return view('follow_list', ['me' => $me, 'users' => $users, 'unfollowed_ids' => $unfollowed_ids, 'flag' => $flag]);
 	}
 
 
-    public function display_unfollowed(Request $request) 
+    public function display_not_following(Request $request, FollowService $followService) 
     {
         $me_id = $request->session()->get('me_id');
 
         $me = User::where('id', $me_id)->first(); // $me is used for app.blade.php
 
-        $followed = follow_relation::where('id', $me_id) // $ followed are all the users's records that 'me' has followed 
-                        ->orderBy('created_at', 'desc')
-                        ->get();
+        $notFollowing = $followService->notFollowing($me);
 
-        $cond = "id not in ("; // suppose 'me' has followed user with id of 8, 9, then we want to construct a condition statment of "(id not in 8, 9, 0)". Throught $user->follower, we can get oen id.
-
-        foreach($followed as $user)
-        {
-            $cond .= $user->follower . ',';
-        }
-        $cond .= $user_id;
-        $cond .= ")";
-
-        $unfollowed = User::whereraw($cond)
-                            ->orderBy('created_at', 'desc')
-                            ->get();
         $flag = "unfollowed";
 
-        return view('follow_list', ['me' => $me, 'users' => $unfollowed, 'flag' => $flag]);
+        return view('follow_list', [
+            'me'    => $me,
+            'users' => $notFollowing,
+            'flag'  => $flag,
+        ]);
     }
 
-    public function display_followed(Request $request)
+    public function display_following(Request $request)
     {
     	$me_id = $request->session()->get('me_id');
 
         $me = User::where('id', $me_id)->first(); // $me is used for app.blade.php
 
-    	$followed = follow_relation::where('id', $me_id) // $followed is all users' records that 'me' have followed.
-               ->orderBy('created_at', 'desc')
-               ->get();
+        $following = $me->following(); 
 
-
-        $cond = "id in ("; // suppose 'me' have followed user with id 8, 9, then I want to construct a condition like "id in (8, 9, 0)". Of course, no user has an id of 0. Throught $user->follower, we can get one id.
-        foreach($followed as $user)
-        {
-        	$cond .= $user->follower . ',';
-        }
-        $cond .= 0;
-        $cond .= ")";
-
-        $followed = User::whereraw($cond)
-        					->orderBy('created_at', 'desc')
-        					->get();
        	$flag = "followed";
 
-        return view('follow_list', ['me' => $me, 'users' => $followed, 'flag' => $flag]);           
+        return view('follow_list', [
+            'me'    => $me, 
+            'users' => $following, 
+            'flag'  => $flag,
+        ]);           
     }
 }

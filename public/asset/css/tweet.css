@@ -603,6 +603,12 @@ profile page right: people
 	color: #8899a6;
 }
 
+.follow_add
+{
+	padding-right: 5px;
+	color: DeepSkyBlue;
+}
+
 .follow_button{
 	display: block;
 	height: 25px;
@@ -618,17 +624,12 @@ profile page right: people
     padding-top: 4px;
 }
 
-.follow_add
-{
-	padding-right: 5px;
-	color: DeepSkyBlue;
-}
-
 
 
 /*************************************
 who to follow page
 **************************************/
+
 .not_profile_main
 {
 	box-sizing: border-box;	
@@ -650,8 +651,28 @@ who to follow page
 }
 
 .follow_card_right_text{
-	width: 350px;
+	width: 400px;
 	float: left;
+}
+
+.follow_card_user {
+	margin: 10px 0 10px 0;
+}
+
+.follow_card_name {
+	font-size: 15px;
+	color: #292f33;
+	font-weight: 600;
+}
+
+.follow_card_user_name {
+	font-size: 14px;
+	color: #8899a6;
+}
+
+.follow_card_signature
+{
+	margin: 10px 0 10px 0;
 }
 
 .follow_who {
@@ -670,6 +691,18 @@ who to follow page
     font-size: 13px;
     margin-top: 3px;
     padding-top: 4px;
+}
+
+.follow_submit
+{
+	height: 30px;
+	width: 100px;
+	border: 1px solid #d9d8d8;
+	border-radius: 4px;
+	background-color: #ffffff;
+	margin-top: 10px;
+	padding-left: 10px;
+	color: #494949;
 }
 
 
@@ -926,17 +959,7 @@ follow
 	margin-bottom: 10px;
 }
 
-.follow_submit
-{
-	height: 30px;
-	width: 150px;
-	border: 1px solid #d9d8d8;
-	border-radius: 4px;
-	background-color: #ffffff;
-	margin-bottom: 18px;
-	padding-left: 10px;
-	color: #494949;
-}
+
 
 
 

@@ -87,7 +87,10 @@
 							</span>
 						</a>
 
-						<button class="follow_button"><span class="icon-user-add follow_add"></span>Follow</button>
+						<button class="follow_button">
+							<span class="icon-user-add follow_add"></span>
+							Follow
+						</button>
 						
 					</div>
 				</div>

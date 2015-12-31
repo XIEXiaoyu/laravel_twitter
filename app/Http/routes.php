@@ -43,7 +43,7 @@ Route::post('/profile_and_settings', ['middleware'=>'log' ,'uses' => 'adminContr
 
 Route::get('/all_users', 'followController@display_all');
 
-Route::get('/who_to_follow', 'followController@display_unfollowed');
+Route::get('/who_to_follow', 'followController@display_not_following');
 
-Route::get('/already_followed', 'followController@display_followed');
+Route::get('/already_followed', 'followController@display_following');
 

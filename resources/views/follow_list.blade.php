@@ -14,7 +14,7 @@
 						@if(in_array($user->id, $unfollowed_ids))
 						@include('partials.follow_card_button')	
 						@else
-						<button>Followed</button>
+						<button class="follow_submit">Following</button>
 						@endif
 					</div>
 				</div>
@@ -25,7 +25,7 @@
 					@include('partials.follow_card', ['user' => $user])
 
 					<div class="follow_who">
-						<button>Already followed</button>
+						<button class="follow_submit">following</button>
 					</div>
 					@endforeach
 
