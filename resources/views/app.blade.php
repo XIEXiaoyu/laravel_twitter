@@ -5,6 +5,7 @@
 	<link href="/asset/icomoon/style.css" rel="stylesheet" type="text/css">
 	<link href="/asset/css/tweet.css" rel="stylesheet" type="text/css">
 	<link href="/asset/css/responsive.css" rel="stylesheet" type="text/css">
+	
 </head>
 
 <body>
@@ -40,7 +41,7 @@
 					{{ $me->pro_img_path }}" alt="Photograph of {{ $me->name }}" class="global_profile_img">
 				</a>			
 		
-				<a class=" global_tweet" href="{{ url('sendTwitter') }}">
+				<a class="global_tweet" href="{{ url('sendTwitter') }}">
 					<button class="global_tweet_button">
 						<span class="icon-compose"></span>
 						<span class="text_tweet">Tweet</span>
@@ -51,6 +52,6 @@
 	</header>
 
     @yield('content')
-    
+<script src="/asset/js/myScript.js"></script>    
 </body>
 </html>
