@@ -1042,6 +1042,9 @@ signature
 
 /* JavaScript CSS */
 .jsP4ProfileTxtClass{
+	position: absolute;
+	top: 30px;
+	left: 1100px;
 	width: 120px;
 	height: 30px;
 	font-size: 13px;
