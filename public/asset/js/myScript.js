@@ -1,3 +1,4 @@
+//change the color of tweet button
 var tweet_button = document.getElementsByClassName("global_tweet_button")[0];
 
 tweet_button.addEventListener("mouseover", global_tweet_mouseOver);
@@ -26,20 +27,15 @@ function addProfileP(){
     jsP4Profile.setAttributeNode(attr);
 }
 
-// returns the position of profile img.
+//delete the profile and settings text
+document.getElementsByClassName("global_profile_img")[0].addEventListener("mouseout", removeAddProfileP);
+
+function removeAddProfileP(){
+	var child = document.getElementsByClassName("jsP4ProfileTxtClass")[0];
+	child.parentNode.removeChild(child);
+}
 
 
-// document.addEventListener("mouseout", function(){ deleteprofileP(this);
-// });
-
-// function deleteprofileP(){
-// 	var child = document.getElementByClassName("jsP4ProfileTxtClass")[0];
-// 	child.parentNode.removeChild(child);
-// }
-
-// function deleteprofileP(this){
-// 	this.removeEventListener("mousemove", function(){ addProfileP(this);});
-// }
 
 
 
