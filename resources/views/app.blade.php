@@ -5,6 +5,7 @@
 	<link href="/asset/icomoon/style.css" rel="stylesheet" type="text/css">
 	<link href="/asset/css/tweet.css" rel="stylesheet" type="text/css">
 	<link href="/asset/css/responsive.css" rel="stylesheet" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
 	
 </head>
 
