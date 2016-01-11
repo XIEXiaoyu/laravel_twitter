@@ -13,16 +13,33 @@ function global_tweet_mouseOut() {
 
 
 //add p tag of 'profile and settings' to the global profile image 
-var profileImage = document.getElementsByClassName("global_profile");
-profileImage[0].addEventListener("mouseover",function(){ addProfileP(this);
-});
+document.getElementsByClassName("global_profile_img")[0].addEventListener("mouseover", addProfileP);
 
-function addProfileP(obj){
+function addProfileP(){
 	var jsP4Profile = document.createElement("p");
 	var jsP4ProfileTxt = document.createTextNode("profile and settings");
 	jsP4Profile.appendChild(jsP4ProfileTxt);
-	obj.appendChild(jsP4Profile);
+	document.body.appendChild(jsP4Profile);
+
+	var attr = document.createAttribute("class");
+    attr.value = "jsP4ProfileTxtClass";
+    jsP4Profile.setAttributeNode(attr);
 }
+
+// returns the position of profile img.
+
+
+// document.addEventListener("mouseout", function(){ deleteprofileP(this);
+// });
+
+// function deleteprofileP(){
+// 	var child = document.getElementByClassName("jsP4ProfileTxtClass")[0];
+// 	child.parentNode.removeChild(child);
+// }
+
+// function deleteprofileP(this){
+// 	this.removeEventListener("mousemove", function(){ addProfileP(this);});
+// }
 
 
 

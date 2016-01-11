@@ -4,6 +4,7 @@ GENERAL
 body {
 	background-color: #f5f8fa;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	position: relative;
 }
 
 .below_heading
@@ -1039,7 +1040,15 @@ signature
     height: 40px;
 }
 
-.like_p
-{
-	
+/* JavaScript CSS */
+.jsP4ProfileTxtClass{
+	width: 120px;
+	height: 30px;
+	font-size: 13px;
+	line-height: 30px;
+	background: black;
+	color: white;
+	font-weight: 300;
+	text-align: center;
+	border-radius: 4px;
 }

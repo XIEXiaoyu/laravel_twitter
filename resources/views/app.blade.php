@@ -48,6 +48,14 @@
 						<span class="text_tweet">Tweet</span>
 					</button>
 				</a>
+				<button id="test" onclick="myFunction()">Try it</button>
+				<script>
+					function myFunction() {
+				    	var x = $(".global_profile_img").position();
+				    	alert("Top: " + x.top + " Left: " + x.left);
+						}
+									
+				</script>
 			</div>	
 		</div>	
 	</header>
