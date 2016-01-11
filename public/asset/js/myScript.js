@@ -11,3 +11,21 @@ function global_tweet_mouseOut() {
 	this.style.background = "#0084B4";
 }
 
+
+//add p tag of 'profile and settings' to the global profile image 
+var profileImage = document.getElementsByClassName("global_profile");
+profileImage[0].addEventListener("mouseover",function(){ addProfileP(this);
+});
+
+function addProfileP(obj){
+	var jsP4Profile = document.createElement("p");
+	var jsP4ProfileTxt = document.createTextNode("profile and settings");
+	jsP4Profile.appendChild(jsP4ProfileTxt);
+	obj.appendChild(jsP4Profile);
+}
+
+
+
+ 
+
+
