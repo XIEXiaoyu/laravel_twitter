@@ -5,7 +5,7 @@ tweet_button.addEventListener("mouseover", global_tweet_mouseOver);
 tweet_button.addEventListener("mouseout", global_tweet_mouseOut);
 
 function global_tweet_mouseOver() {
-	this.style.background = "#0084cc";
+	this.style.background = "#4f7cd8";
 }
 
 function global_tweet_mouseOut() {
