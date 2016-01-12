@@ -37,10 +37,9 @@
 					<input type="submit" value="Go" class="global_search_submit">
 				</form>
 				
-				<a class="global_profile" href="{{ url('profile_and_settings') }}">
-					<img src="
-					{{ $me->pro_img_path }}" alt="Photograph of {{ $me->name }}" class="global_profile_img">
-				</a>			
+
+					<img class="global_profile_img" src="
+					{{ $me->pro_img_path }}" alt="Photograph of {{ $me->name }}" >
 		
 				<a class="global_tweet" href="{{ url('sendTwitter') }}">
 					<button class="global_tweet_button">
