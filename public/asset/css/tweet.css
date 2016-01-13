@@ -1040,7 +1040,7 @@ signature
 .jsP4ProfileTxtClass{
 	position: absolute;
 	top: 30px;
-	left: 1100px;
+	left: 1150px;
 	width: 120px;
 	height: 30px;
 	font-size: 13px;
@@ -1053,53 +1053,58 @@ signature
 }
 
 /* for the global dropdown list */
-.globalListClass {
+.globalList {
+	width: 140px;
+	height: 120px;
 	position: absolute;
 	box-sizing: border-box;
 	top: 28px;
 	left: 1050px;
 	background: white;
-	font-size: 12px;
 	border: 1px solid #d8d8d8;
 	list-style: none;
 	padding-left: 0px;
-	color: slateGray;
 	border-radius: 6px;
 }
 
-.dropdownProfileClass{
+.dropdownProfile{
 	height: 40px;
 	line-height: 40px;
 	padding-left: 20px;
 	border-bottom: 1px solid #d8d8d8;
 }
 
-.dropdownProfileClass a{
-	color: #66757f;
+.dropdownProfile a{
+	color: SlateGray;
+	font-size: 12px;
+	font-weight: 400;
 }
 
-.dropdownSignatureClass{
+.dropdownSignature{
 	height: 40px;
     line-height: 40px;
     padding-left: 20px;
     border-bottom: 1px solid #d8d8d8;
 }
 
-.dropdownSignatureClass a{
-	color: #66757f;
+.dropdownSignature a{
+	color: SlateGray;
+	font-size: 12px;
+	font-weight: 400;
 }
 
-.dropdownLogoutClass{
+.dropdownLogout{
 	height: 40px;
     line-height: 40px;
     padding-left: 20px;
 }
 
-.dropdownLogoutClass a{
-	color: #66757f;
+.dropdownLogout a{
+	color: SlateGray;
+	font-size: 12px;
+	font-weight: 400;
 }
 
-#66757f;
 
 
 

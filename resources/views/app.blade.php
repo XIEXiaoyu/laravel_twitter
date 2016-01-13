@@ -37,9 +37,19 @@
 					<input type="submit" value="Go" class="global_search_submit">
 				</form>
 				
-
-					<img class="global_profile_img" src="
-					{{ $me->pro_img_path }}" alt="Photograph of {{ $me->name }}" >
+				<img class="global_profile_img" src="
+				{{ $me->pro_img_path }}" alt="Photograph of {{ $me->name }}" >
+				<ul class="globalList">
+					<li class="dropdownProfile">
+						<a class="dropdownProfileA" href="#">View Profile</a>
+					</li>
+					<li class="dropdownSignature">
+						<a class="dropdownSignatureA" href="#">Edit Signature</a>
+					</li>
+					<li class="dropdownLogout">
+						<a class="dropdownLogoutA" href="#">Logout</a>
+					</li>
+				</ul>
 		
 				<a class="global_tweet" href="{{ url('sendTwitter') }}">
 					<button class="global_tweet_button">
