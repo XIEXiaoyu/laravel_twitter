@@ -1058,7 +1058,7 @@ signature
 	height: 120px;
 	position: absolute;
 	box-sizing: border-box;
-	top: 28px;
+	top: 35px;
 	left: 1050px;
 	background: white;
 	border: 1px solid #d8d8d8;
@@ -1072,6 +1072,8 @@ signature
 	line-height: 40px;
 	padding-left: 20px;
 	border-bottom: 1px solid #d8d8d8;
+	border-top-left-radius:6px;
+	border-top-right-radius:6px;
 }
 
 .dropdownProfile a{
@@ -1097,6 +1099,8 @@ signature
 	height: 40px;
     line-height: 40px;
     padding-left: 20px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 .dropdownLogout a{
