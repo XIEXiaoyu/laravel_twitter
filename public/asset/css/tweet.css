@@ -753,7 +753,7 @@ leave a message
 **************************************/
 
 .new_post{
-	margin-top: 25px;
+	margin-top: 75px;
 	margin-bottom: 25px;
 }
 
@@ -1037,10 +1037,10 @@ signature
 }
 
 /* JavaScript CSS */
-.jsP4ProfileTxtClass{
+.ProfileSettings{
 	position: absolute;
 	top: 30px;
-	left: 1150px;
+	left: 1090px;
 	width: 120px;
 	height: 30px;
 	font-size: 13px;

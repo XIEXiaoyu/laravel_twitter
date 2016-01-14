@@ -40,14 +40,14 @@
 				<img class="global_profile_img" src="
 				{{ $me->pro_img_path }}" alt="Photograph of {{ $me->name }}" >
 
-				<p class="jsP4ProfileTxtClass">profile and settings</p>
+				<p class="ProfileSettings">profile and settings</p>
 
 				<ul class="globalList">
 					<li class="dropdownProfile">
-						<a class="dropdownProfileA" href="#">View Profile</a>
+						<a class="dropdownProfileA" href="{{ url('profile?user_id='.$me->id)}}">View Profile</a>
 					</li>
 					<li class="dropdownSignature">
-						<a class="dropdownSignatureA" href="#">Edit Signature</a>
+						<a class="dropdownSignatureA" href="{{ url('profile_and_settings') }}">Edit Signature</a>
 					</li>
 					<li class="dropdownLogout">
 						<a class="dropdownLogoutA" href="#">Logout</a>
