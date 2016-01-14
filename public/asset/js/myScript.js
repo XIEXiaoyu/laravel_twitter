@@ -49,11 +49,12 @@ $(document).ready(function(){
 });
 
 //if clicking on the global profile image, there will be a dropdown list appear
-document.getElementsByClassName("global_profile_img")[0].addEventListener("mousedown", showDropdownList);
-
-function showDropdownList(){
-	document.getElementsByClassName("globalList")[0].style.display = "block";
-}
+$(document).ready(function(){
+	$("ul.globalList").click(function(e){
+		e.stopPropagation();
+		$(this).show();
+	});
+})
 
 //When we release the click, we need to let the text of 'profile and settings' disapper when the user click the global image.
 document.getElementsByClassName("global_profile_img")[0].addEventListener("mouseup", removeAddProfileP);
