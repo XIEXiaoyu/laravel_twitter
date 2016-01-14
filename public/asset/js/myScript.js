@@ -53,7 +53,7 @@ $(document).ready(function(){
 	$("img.global_profile_img").click(function(e){
 		e.stopPropagation(); // Important, using this line to avoid its parent or ancestor, for example, the body, to execute their click event. Or, we would see that the click event of the image doesn't work, because when we click on the image, the dropdown list shows, but immediately after that, the click event on the body takes effect, so the dropdown will disapper, so in all, you would see that there is no effect at all. This is due to the bubbling characterics of javascript.
 		$("ul.globalList").show();
-		console.log("click the button");
+		// console.log("click the button");
 	});
 })
 
@@ -61,7 +61,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$(document.body).click(function(){
 		$("ul.globalList").hide();
-		console.log("toggle");
+		// console.log("toggle");
 	});
 });
 
