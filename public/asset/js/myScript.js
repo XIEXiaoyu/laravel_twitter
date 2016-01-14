@@ -62,26 +62,24 @@ document.getElementsByClassName("global_profile_img")[0].addEventListener("mouse
 
 /* if the mouse pointer is on one of the list items in the global dropdown list, the color the item is changed
 */
-//set for the profile a tag
-document.getElementsByClassName("dropdownProfile")[0].addEventListener("mouseover", function(){ changeListLinkColor(this); 
-	});
+$(document).ready(function(){
+	$(".globalList li").mouseenter(function(){
+		var className = $(this).attr('class');
+		$("li."+className).css("background-color", "#0084B4");
+    	var classNameOfA = $("."+className+ " a").attr('class');
+    	$("a."+classNameOfA).css({"color": "white", "font-weight": "500"});
+    	});
+})
 
-document.getElementsByClassName("dropdownProfile")[0].addEventListener("mouseout", function(){ changeListLinkColorBack(this); 
-	});
+$(document).ready(function(){
+	$(".globalList li").mouseleave(function(){
+		var className = $(this).attr('class');
+		$("li."+className).css("background-color", "white");
+		var classNameOfA = $("."+className+" a").attr('class');
+		$("a."+classNameOfA).css({"color": "SlateGray", "font-weight": "400"});
+    	});
+});
 
-function changeListLinkColor(obj){
-	obj.style.backgroundColor = "#0084B4";	
-	var a = document.getElementsByClassName("dropdownProfileA")[0];
-	a.style.color = "white";
-	a.style.fontWeight = 500;
-}
-
-function changeListLinkColorBack(obj){
-	obj.style.backgroundColor = "white";
-	var a = document.getElementsByClassName("dropdownProfileA")[0];
-	a.style.color = "SlateGray";
-	a.style.fontWeight = 400;
-}
 
 
 
