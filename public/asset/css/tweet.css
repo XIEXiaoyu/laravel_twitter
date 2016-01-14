@@ -1068,6 +1068,7 @@ signature
 }
 
 .dropdownProfile{
+	box-sizing: border-box;
 	height: 40px;
 	line-height: 40px;
 	padding-left: 20px;
@@ -1083,6 +1084,7 @@ signature
 }
 
 .dropdownSignature{
+	box-sizing: border-box;
 	height: 40px;
     line-height: 40px;
     padding-left: 20px;
@@ -1096,8 +1098,9 @@ signature
 }
 
 .dropdownLogout{
-	height: 40px;
-    line-height: 40px;
+	box-sizing: border-box;
+	height: 38px;
+    line-height: 38px;
     padding-left: 20px;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
