@@ -39,6 +39,9 @@
 				
 				<img class="global_profile_img" src="
 				{{ $me->pro_img_path }}" alt="Photograph of {{ $me->name }}" >
+
+				<p class="jsP4ProfileTxtClass">profile and settings</p>
+
 				<ul class="globalList">
 					<li class="dropdownProfile">
 						<a class="dropdownProfileA" href="#">View Profile</a>

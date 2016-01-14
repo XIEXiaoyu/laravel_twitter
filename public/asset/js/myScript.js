@@ -1,4 +1,4 @@
-//change the color of tweet button
+/*change the color of tweet button */
 var tweet_button = document.getElementsByClassName("global_tweet_button")[0];
 
 tweet_button.addEventListener("mouseover", global_tweet_mouseOver);
@@ -12,34 +12,35 @@ function global_tweet_mouseOut() {
 	this.style.background = "#0084B4";
 }
 
-/* If the mouse pointer is on the global profile image, there will be indication of 'profile and settings' appears
+
+
+/* If the mouse pointer is on the global profile image, there will be indication of 'profile and settings' appears. When we move the mouse pointer out of the image, the text will disappear
 */
-//add p tag of 'profile and settings' to the global profile image 
-document.getElementsByClassName("global_profile_img")[0].addEventListener("mouseover", addProfileP);
+//when the page is loaded, the text should not be loaded
+$(document).ready(function(){
+	$("p.jsP4ProfileTxtClass").hide();
+});
+//when mouse pointer is over the image, show the text
+$(document).ready(function(){
+	$("img.global_profile_img").mouseenter(function(){
+		//first need to check if the dropdown list is on the screen, if its on the screen, we shall not let the text appear
+		if(!$("ul.globalList").is(":visible"))
+		{
+			$("p.jsP4ProfileTxtClass").show();
+			console.log("show");
+		}		
+	});
+});
 
-function addProfileP(){
-	var jsP4Profile = document.createElement("p");
-	var jsP4ProfileTxt = document.createTextNode("profile and settings");
-	jsP4Profile.appendChild(jsP4ProfileTxt);
-	document.body.appendChild(jsP4Profile);
+//when the mouse pointer is moved out of the image, the text should disappear
+$(document).ready(function(){
+	$("img.global_profile_img").mouseleave(function(){
+		$("p.jsP4ProfileTxtClass").hide();
+		console.log("hide");
+	});
+});
 
-	var attr = document.createAttribute("class");
-    attr.value = "jsP4ProfileTxtClass";
-    jsP4Profile.setAttributeNode(attr);
-}
 
-//delete the profile and settings text
-document.getElementsByClassName("global_profile_img")[0].addEventListener("mouseout", removeAddProfileP);
-
-function removeAddProfileP(){
-	var child = document.getElementsByClassName("jsP4ProfileTxtClass")[0];
-	var parent = document.body;
-	if($.contains(parent, child) == true)
-	{
-		child.parentNode.removeChild(child);
-	}
-	//else do nothing
-}
 
 /* This part achieves that when we click the global profile image, the dropdown list will show up*/
 
@@ -52,12 +53,18 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("img.global_profile_img").click(function(e){
 		e.stopPropagation(); // Important, using this line to avoid its parent or ancestor, for example, the body, to execute their click event. Or, we would see that the click event of the image doesn't work, because when we click on the image, the dropdown list shows, but immediately after that, the click event on the body takes effect, so the dropdown will disapper, so in all, you would see that there is no effect at all. This is due to the bubbling characterics of javascript.
+
+		// if text 'profile and settings' is on the screen, we need first to let it disappear
+		if($("p.jsP4ProfileTxtClass").is(":visible")){
+			$("p.jsP4ProfileTxtClass").hide();
+		}
+		//now can display the dropdown list
 		$("ul.globalList").show();
 		// console.log("click the button");
 	});
 })
 
-/* Make the dropdown list disappear when clicking the rest of the page */
+// Make the dropdown list disappear when clicking the rest of the page 
 $(document).ready(function(){
 	$(document.body).click(function(){
 		$("ul.globalList").hide();
@@ -65,8 +72,7 @@ $(document).ready(function(){
 	});
 });
 
-//When we release the click, we need to let the text of 'profile and settings' disapper when the user click the global image.
-document.getElementsByClassName("global_profile_img")[0].addEventListener("mouseup", removeAddProfileP);
+
 
 /* if the mouse pointer is on one of the list items in the global dropdown list, the color the item is changed
 */
@@ -87,6 +93,8 @@ $(document).ready(function(){
 		$("a."+classNameOfA).css({"color": "SlateGray", "font-weight": "400"});
     	});
 });
+
+/**/
 
 
 
