@@ -50,11 +50,20 @@ $(document).ready(function(){
 
 //if clicking on the global profile image, there will be a dropdown list appear
 $(document).ready(function(){
-	$("ul.globalList").click(function(e){
-		e.stopPropagation();
-		$(this).show();
+	$("img.global_profile_img").click(function(e){
+		e.stopPropagation(); // Important, using this line to avoid its parent or ancestor, for example, the body, to execute their click event. Or, we would see that the click event of the image doesn't work, because when we click on the image, the dropdown list shows, but immediately after that, the click event on the body takes effect, so the dropdown will disapper, so in all, you would see that there is no effect at all. This is due to the bubbling characterics of javascript.
+		$("ul.globalList").show();
+		console.log("click the button");
 	});
 })
+
+/* Make the dropdown list disappear when clicking the rest of the page */
+$(document).ready(function(){
+	$(document.body).click(function(){
+		$("ul.globalList").hide();
+		console.log("toggle");
+	});
+});
 
 //When we release the click, we need to let the text of 'profile and settings' disapper when the user click the global image.
 document.getElementsByClassName("global_profile_img")[0].addEventListener("mouseup", removeAddProfileP);
@@ -79,14 +88,7 @@ $(document).ready(function(){
     	});
 });
 
-/* Make the dropdown list disappear when clicking the rest of the page */
-//If I click the image, I want to show the list, but as I've defined that if I click on the body, the list would appear, so the real effect is that I click the image, then the list appears, and immediately as the image is also on the body, so the click event on body would start to work, so the list would disappear. So I need to use the e.stopPropagation to stop any click event to work on image's parent.
-$(document).ready(function(){
-	$(document.body).click(function(){
-		var e = document.getElementsByClassName("globalList")[0];
-		e.style.display = ((e.style.display) != 'none'? 'none' : 'block');
-	});
-});
+
 
 
 
