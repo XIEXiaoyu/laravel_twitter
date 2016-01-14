@@ -44,11 +44,9 @@ function removeAddProfileP(){
 /* This part achieves that when we click the global profile image, the dropdown list will show up*/
 
 //The 'globalList' is existed alreay, but we don't want it show up when the page is just loaded.
-document.addEventListener("DOMContentLoaded", hideDropdownList); //reference: http://youmightnotneedjquery.com/
-
-function hideDropdownList(){
-	document.getElementsByClassName("globalList")[0].style.display = 'none';
-}
+$(document).ready(function(){
+	$("ul.globalList").hide();
+});
 
 //if clicking on the global profile image, there will be a dropdown list appear
 document.getElementsByClassName("global_profile_img")[0].addEventListener("mousedown", showDropdownList);
@@ -78,6 +76,15 @@ $(document).ready(function(){
 		var classNameOfA = $("."+className+" a").attr('class');
 		$("a."+classNameOfA).css({"color": "SlateGray", "font-weight": "400"});
     	});
+});
+
+/* Make the dropdown list disappear when clicking the rest of the page */
+//If I click the image, I want to show the list, but as I've defined that if I click on the body, the list would appear, so the real effect is that I click the image, then the list appears, and immediately as the image is also on the body, so the click event on body would start to work, so the list would disappear. So I need to use the e.stopPropagation to stop any click event to work on image's parent.
+$(document).ready(function(){
+	$(document.body).click(function(){
+		var e = document.getElementsByClassName("globalList")[0];
+		e.style.display = ((e.style.display) != 'none'? 'none' : 'block');
+	});
 });
 
 
