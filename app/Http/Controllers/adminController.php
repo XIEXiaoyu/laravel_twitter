@@ -86,7 +86,7 @@ class adminController extends Controller
                 Session::put('name', $me->name); 
                 Session::put('me_id', $me->id);
 
-                return Redirect::to('profile?user_id=' . $me->id);
+                return Redirect::to('timeline?user_id=' . $me->id);
             }
         }
     }

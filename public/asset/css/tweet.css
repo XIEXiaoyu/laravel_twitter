@@ -977,10 +977,11 @@ signature
 	margin: 20px auto 0;
 	width: 500px;
 	height: 30px;
-	border: 1px solid blue;
+	border: 1px solid #0084B4;
 	border-radius: 4px;
 	line-height: 30px;
 	padding-left: 5px;
+	background: white;
 }
 
 .particulars
