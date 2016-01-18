@@ -53,7 +53,7 @@ class tweetController extends Controller
             $tweet->thread_id = $tweet->id;
             $tweet->save();
 
-            return Redirect::to('profile?user_id=' . $me); // Todo: redirect to his timeline page.
+            return Redirect::to('timeline?user_id=' . $me); // Todo: redirect to his timeline page.
         }
         
     }

@@ -1,5 +1,5 @@
 <div class="left_photo">
-	<img src="{{ $user->pro_img_path }}" alt="Photograph of Zhiyan" class="profile-photo">
+	<img src="{{ $user->pro_img_path }}" alt="Photograph of {{ $user->user_name}}" class="profile-photo">
 </div>
 <div class="right_text">
 	<p class="twitterer">

@@ -38,7 +38,7 @@
 		</div>						
 
 		<div class="main">
-			@if (count($tweets) == 0)
+{{-- 			@if (count($tweets) == 0)
 			<p class="no_tweet">Hi, you have no tweets by now.</p>
 			@else
 			@foreach ($tweets as $tweet)
@@ -50,9 +50,23 @@
 				</div>
 			</div>
 			@endforeach
+			@endif --}}
+			@if (count($followingTweets) == 0)
+			<p class="no_tweet">Hi, you didn't follow any body by now.</p>
+			@else
+			@foreach ($followingTweets as $tweet)
+			<div class="tweet">
+				@include('partials.user-info', ['user' => $followings[$tweet->user_id], 'tweet' => $tweet])
+
+				@include('partials.function-links', ['tweet' => $tweet])
+
+				</div>
+			</div>
+			@endforeach
 			@endif
+
 			
-			@if (count($tweets) != 0)
+			@if (count($followingTweets) != 0)
 			<ul class="pre_and_next">
 				<li class="prev paging">					
 					<a href=""><span class="icon-previous2"></span>Prev</a>

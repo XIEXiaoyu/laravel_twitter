@@ -50,7 +50,7 @@
 						<a class="dropdownSignatureA" href="{{ url('profile_and_settings') }}">Edit Signature</a>
 					</li>
 					<li class="dropdownLogout">
-						<a class="dropdownLogoutA" href="#">Logout</a>
+						<a class="dropdownLogoutA" href="{{ url('logout') }}">Logout</a>
 					</li>
 				</ul>
 		
