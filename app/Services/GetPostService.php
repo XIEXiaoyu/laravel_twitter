@@ -27,6 +27,6 @@ class GetPostService {
 			$followingPosts->take($number);
 		}
 
-		return $followingPosts->get();
+        return $followingPosts; // important, the result has not been applied the get() method, or we can not apply pagination on the reuslt that has been applied the get() method.
 	}
 }

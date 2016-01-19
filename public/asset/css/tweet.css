@@ -478,13 +478,12 @@ previous and next
 	float:right;
 }
 
-.pre_and_next {
+.pager {
 	display: block;
-	width: 550px;
-	margin-top: 25px;
-	margin-bottom: 147px;
+	width: 590px;
+	margin: 25px 0 147px;
 	list-style: none;
-	margin: 0 auto;
+	padding-left: 0px;
 }
 
 .pre_and_next li {
@@ -521,6 +520,10 @@ previous and next
 .icon-next2 {
 	margin-left: 10px;
     vertical-align: text-bottom; /* to let the >> icon align with text by bottom*/
+}
+
+.pre_left_a {
+	margin-left: 25px;
 }
 
 

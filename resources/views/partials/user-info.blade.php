@@ -12,3 +12,4 @@
 	</p>
 	<p class="twitter_message">{{ $tweet->message}}
 	</p>
+</div>

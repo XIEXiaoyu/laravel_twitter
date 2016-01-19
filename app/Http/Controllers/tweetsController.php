@@ -13,6 +13,9 @@ use App\User;
 use Redirect;
 use App\Services\FollowService;
 use App\Services\GetPostService;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Query\Builder;
+
 
 class tweetsController extends Controller
 {
@@ -55,14 +58,18 @@ class tweetsController extends Controller
             }
         }
 
+
         // get the user's information
         $user = User::where('id', $user_id)->first();
+
 
         // get 'me' info
         $me = User::where('id', $me_id)->first(); //first() returns a User instance
 
         // get all the tweets from users who is followed by 'me'
-        $followingTweets = $getPostService->followingPost($me);
+        $followingPosts = $getPostService->followingPost($me);
+        $followingTweets = $followingPosts->simplePaginate(3);
+        $followingTweets->setPath('timeline');
 
         // get infos of all users whom '$me' is following.
         $followingUsers = $me->following();    
