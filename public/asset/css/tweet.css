@@ -15,7 +15,7 @@ body {
 .wrapper {
 	width: 70%;
   	max-width: 800px;
-  	margin: 0 auto;
+  	margin: 90px auto 0;
 }
 
 a {
@@ -451,13 +451,16 @@ twitter message
 /*******************************
 previous and next
 *********************************/
+.above_pre_and_next{
+	min-height: 500px;
+}
 
-.pager{
+.pager {
 	display: block;
-	clear: left;
+	width: 590px;
+	margin: 0px;
 	list-style: none;
-	margin: 25px 0 147px;
-	padding-left: 0;
+	padding-left: 0px;
 }
 
 .pager li{
@@ -476,14 +479,6 @@ previous and next
 }
 .pager li:last-child{
 	float:right;
-}
-
-.pager {
-	display: block;
-	width: 590px;
-	margin: 25px 0 147px;
-	list-style: none;
-	padding-left: 0px;
 }
 
 .pre_and_next li {
@@ -866,10 +861,17 @@ SignUp form
 }
 
 .form_wrapper_left_and_right {
-	height: 500px;
 	padding-top: 0px;
 	padding-left: 100px;
 	padding-right: 25px;
+}
+
+.register_form_wrapper_left_and_right{
+	height: 400px;
+}
+
+.login_form_wrapper_left_and_right{
+	height: 220px;
 }
 
 .left_indication_text {
@@ -1115,6 +1117,44 @@ signature
 	font-size: 12px;
 	font-weight: 400;
 }
+
+
+
+/***************
+login page
+****************/
+.about{
+	margin-left: 375px;
+	line-height: 46px;
+	float: left;
+	color: #2e2e2e;
+	margin-right: 100px;
+}
+
+.quill-login{
+	margin-right: 10px;
+}
+
+.login_nav{
+	float: left;
+}
+
+.login_nav a {
+	color: #2e2e2e;
+}
+
+.login_nav li:nth-child(1){
+	margin-right: 60px;
+}
+
+.login_nav li{
+	display: inline-block;
+}
+
+.icon{
+	margin-right: 5px;
+}
+
 
 
 

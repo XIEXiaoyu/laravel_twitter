@@ -38,29 +38,19 @@
 		</div>						
 
 		<div class="main">
-			@if (count($followingTweets) == 0)
-			<p class="no_tweet">Hi, you didn't follow any body by now.</p>
-			@else
-			@foreach ($followingTweets as $tweet)
-			<div class="tweet">
-				@include('partials.user-info', ['user' => $followings[$tweet->user_id], 'tweet' => $tweet])
+			<div class="above_pre_and_next">
+				@if (count($followingTweets) == 0)
+				<p class="no_tweet">Hi, you didn't follow any body by now.</p>
+				@else
+				@foreach ($followingTweets as $tweet)
+				<div class="tweet">
+					@include('partials.user-info', ['user' => $followings[$tweet->user_id], 'tweet' => $tweet])
 
-				@include('partials.function-links', ['tweet' => $tweet])
+					@include('partials.function-links', ['tweet' => $tweet])
+				</div>
+				@endforeach
+				@endif
 			</div>
-			@endforeach
-			@endif
-
-			
-			@if (count($followingTweets) != 0)
-			<ul class="pager">
-				<li class="prev paging">					
-					<a href=""><span class="icon-previous2"></span>Prev</a>
-				</li>
-				<li class="next paging">		 				
-					<a href="">Next<span class="icon-next2"></span></a>
-				</li>				
-			</ul>
-			@endif
 			
 			{!! $followingTweets->appends(['user_id'=>$me_id])->render() !!}
 		</div>

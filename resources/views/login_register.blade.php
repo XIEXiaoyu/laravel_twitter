@@ -10,8 +10,8 @@
 <body>
 	<div class="heading">
 		<header>			
-			<a href="" class="about"><span class="icon-quill"></span>About</a>
-			<nav>
+			<a href="" class="about"><span class="icon-quill quill-login"></span >About</a>
+			<nav class="login_nav">
 				<ul>
 					<li>
 						<a href="{{ url('register') }}"><span class="icon-signup icon"></span>Signup</a>

@@ -68,7 +68,7 @@ class tweetsController extends Controller
 
         // get all the tweets from users who is followed by 'me'
         $followingPosts = $getPostService->followingPost($me);
-        $followingTweets = $followingPosts->simplePaginate(3);
+        $followingTweets = $followingPosts->simplePaginate(5);
         $followingTweets->setPath('timeline');
 
         // get infos of all users whom '$me' is following.
